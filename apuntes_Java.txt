@@ -1,0 +1,619 @@
+APUNTES JAVA
+
+CLASE 4
+Lenguaje de prog --> 
+Algoritmos --> leguaje de programacion aplicado de manera secuenciada para llegar a un determinado objetivo o resultado. 
+	
+	.preciso
+	.definido 
+	.finito
+
+
+PARADIGMAS DE LA PROGRAMACION
+	diferentes formas de resolver diferentes problemas
+
+4 paradigmas
+	.prog estructurada: utiliza instucciones y lenguaje de manera secuencial, usa ciclos y condicionales
+	.prog funcional: tareas predefinidas con instrucciones
+	.prog orientada a objetos: permite modelar problemas de la vida cotidiana, toma datos de la realidad y los aplica a sus algoritmos
+	.prog reactiva: observa un flujo de datos asincronicos y reacciona frente a los cambios dinamicos de los datos que ingresan 
+
+DIAGRAMAS DE FLUJO
+	esquematizacion de algoritmos
+ 
+{inicio-->
+	-->paso1:accion a realizar
+		-->paso2:accion secuenciada, posible decision
+			-->pasox: SI/NO --> ciclo/bucle
+				-->final}
+
+
+Acciones en ciclo conocidas con Java:(existen diferentes ciclos utilizacion por java dependiendo del tipo de datos que deben ser procesados) todos los ciclos pueden realizar las mismas operaciònes pero debido a su naturaleza poseen limitaciones segun su tipo
+	
+	-ciclo for: todas las instrucciones y limites son establecidos al inicio del ciclo ej--> (inicio; condicion; acciòn) --> (i=1; i<=10;i++)
+	-ciclo while: los parametros como el inicio son establecidos fuera de las condiciones iniciales del ciclo, al ciclo solo se le debe especificar que acciòn debe realizar y en que condicion --> mientras(condicion){accion} --> while(i<=10){i++}
+	-ciclo do-while: instrucciones aplicadas al inicio del ciclo y condiones introducidas al final --> hacer(i++){mientras(i<=10)} --> do(sumatoria de i){while(i sea menor o igual a 10)}
+
+Diagrama de flujo:
+
+inicio del ciclo(i=1; i<=10; i++)
+	-->sumatoria de 1 en 1
+		-->comprobacion del valor de i
+			--> i < 10 el ciclo continua
+				--> i>=10 el ciclo se detiene
+					--> si i<10 --> System.out.print(i + " ");
+						-->si i>=10 --> System.out.print(i);
+
+Visualizacion de la acciòn del ciclo -->(1,2,3,4,5,6,7,8,9,10)
+
+tipos de escritura de codigo
+-->CamelCase
+-->UnderScore
+
+
+CLASE 7 --> ESTRUCTURAS DE CONTROL Y BUCLES REPETITIVOS
+
+¿Que es una estructura condicional? 
+	-->Las condiciones se utilizan para controlar el FLUJO del programa, es comun estructurarlas previamente con un driagrama de flujo. 
+
+estructuras condicionales:
+ 
+	-if.else (condicional simple que corrobora un valor booleano de V o F y redirige el flujo del programa segun corresponda)
+	-else if (agrega complejidad de condiciones a la estructura if)
+	-switch (permite modificar el flujo en funcion del VALOR de la condicion, por ejemplo valor 1, valor 2, etc)
+
+ciclos repetitivos: 
+	
+	-while (condicional que ejecuta una porcion de codigo apartir de la comprobacion una variable booleanda, por una determinada cantidad de ciclos)
+	-do-while (do - primero ejecuta la porcion de codigo al menos una vez y luego while evalua la condicion de corte y ejecuta tantos ciclos como sea necesario)
+	-for (la diferencia principal con los dos anteriores es que se utiliza para ejecutar una porcion de codigo una cantidad definida de veces preestablecida)
+
+
+UNIDAD 3 CLASE 11:
+ENCAPSULAMIENTO Y CLASES OBJECT
+
+SOLIDO
+.responsabilidad unica: responsabilidad unica por clases, metodos, funciones y obejtos no mezclar funcionalidad de elementos
+.abierto y cerrado: clases publicas y clases privadas que respaldan la seguridad del codigo 
+.liskov (ampliar)
+.segregacion de interfases (ampliar)
+.inversion de dependencias: utilizar codigos ya escritos o clases importadas ya creadas para utilizar los codigos mas conssistentes y bien escritos
+
+ENCAPSULAMIENTO
+principio de abierto y cerrado --> utilizacion y creacion de modificadores y obtenedores (set and get) utilizados atravez de funciones preestablecida
+una forma practica de hacer esto es establecer los atributos como private por lo cual es necesario acceder a ellos atravez de getters y setters
+
+private string nombre; (parametro) -> this.nombre (valor) = nombre; -> getNombre(metodo de obtencion);
+
+CLASE objetos
+herencia y polimorfismo 
+
+herencia: una clase hija o derivada hereda atributos o metodos de su clase padre, comparten campos comunes de la clase y se diferencian en los campos especificos que los diferencian
+clases padres e hhijas poseen metodos compartidos y especificos; y atributos compartidos y especificos;
+	ventajas:
+	.reutilizacion ->  utiliza el codigo y extienden sus funcionalidades
+	.mentenibilidad -> cualquier cambio en la clase padre se refleja en la clase hija
+	.modularidad -> organiza y mantiene el codigo estructurado en modulos lo que facilita la comprension y el mantenimiento
+
+estas EXTENSIONES de las clases hijas respecto de las clases padres se representan por el metodo o funcin "extends"
+
+CLASE Y SUPERCLASE
+	el concepto de herencia conduce a una extructura jerarquica,
+	cada clase puede poseer una sola clase padre denominada superclase y la clase hija es denominada como subclase
+	con todos los conceptos heredados que esto supone
+
+
+CLASE DANI PRIMERA CLASE
+repaso clase herencia y polimorfismo 
+	-> importancia central REUTILIZACION DEL CODIGO por parte de las clases hijas
+	-> metodos heredados de la clase objet equals y toString
+
+dudas -> creacion del metodo toString que diferencia tiene con crear un metodo imprimir
+	  -> datos del contructor ctrl space.
+	  -> es buena practica crear paquetes y clases por separada e importar las clases que seran utilizadas al main.
+	  -> una buena practica a la hora de crear objetos de una clase que pertenecen a una superclase es crealos con el nombre de la super clase y luego de la subclase
+	  	 ej: Persona e1 = new Empleado ();
+	  -> polimorfismo:
+
+
+CLASE 13: CLASES ABSTRACTAS E INTERFASES
+	la ABSTRACCION facilita la encapsular la complejidad de un objeto, las clases abtractas poseen metodos genericos que heredan a las clases hijas concretas
+	las clases abractas no se pueden instaciar directamente sino que se utilizan como plantillas, pero pueden contener metodos abstractos o concretos.
+	los METODOS ABSTRACTOS no tienen cuerpo, por lo tanto se los declara en la clase abstrac padre pero seran sobreescritos en las clases hijas donde seran inplementados
+	todas las cosas hijas comparten SI O SI los metodos abstractos heredados de la clase padre pero le dan su propia implementacion.
+
+	herencia multiple? => en Java no se puede implementar la herencia multiple por lo tanto un solucion esta esto es la implementacion de interfases
+		se utilizan cuando tenemos muchas clases que tiene un comportamiento en comun pero no pueden heredar de una clase padre.
+		implementan solamente medotodos publicos y abstractos ademas de que solamente poseen metodos dentro de ellas.
+
+
+CLASE 14 - ARREGLOS DINAMICOS
+
+	COLECCIONES EN JAVA
+		Las colecciones en java son estructuras de datos que permiten almacenar y manipular conjuntos de elementos de manera dinamica. 
+		Proporcionan una forma mas flexible y eficiente de administrar datos que los arreglos estaticos.
+		El framework de colecciones en java se basa en la JERARQUIA DE INTERFASES Y CLASES donde LAS INTERFASES DEFINEN LOS CONTRATOS y 
+		LAS CLASES PROPORCIONAN IMPLEMENTACIONES CONCRETAS.
+
+		Interfases principales en la jerarquia de las colecciones son Collection, List, Set y Map.
+		
+			-Colection es la INTERFAZ RAIZ de la jerarquia de colecciones, define los metodos basicos que son comunes en todas las colecciones 
+			como add(), remove(), size(), content(), etc. Las implementaciones en Colection pueden contener elementos duplicados y no tienen un 
+			orden definido.
+
+			-List es una de las subinterfases de Colection, que define una coleccion ORDENADA de elementos, estos elementos poseen un indice que
+			es utilizado para acceder y manipular a los datos almacenados en elementos. Su principal implementacion es en la clase ArrayList.
+
+			-Set es una subinterfaz de Colection que no permite elementos duplicados pero que no tiene un orden especifico, algunas de sus 
+			implementaciones son HashSet, LinkedHashSet y TreeSet.
+
+			-Map es una interfaz que asocia claves unicas con valores o pares CLAVE-VALOR, cada clave se asigna a un valor que se puede recuperar
+			utilizando dicha clave, sus implementaciones principales son HasMap, LinkedHashMap y TreeMap.
+
+	Uno de los principales beneficion de la implementacion de Colecciones en java es la implementacion optimizada en terminos de rendimiento y 
+	uso de memoria, por ejemplo ArrayList es una implementacion basada en arreglos que permite un acceso rapido a los elementos, mientras que 
+	LinkedList es una implementacion de lista enlazada que permite una insercion y eliminacion eficiente de elementos.
+
+	En resumen las colecciones en java son una parte fundamental del lenguaje y proporcionan una forma flexible y eficiente de administrar 
+	conjuntos de elementos, con una amplia gama de interfases y clases disponibles que puedes elegir segun las necesidades del programa que estas
+	desarrollando para aprovechar sus operaciones y sus metodos.
+	
+	Los arreglos dinamicos son posibles gracias a la creacion de la clase ArrayList que aparece de manera nativa en el entorno en java.
+	La clase ArrayList proporciona una forma poderosa y flexible de almacenar y manipular COLECCIONES de elementos de manera DINAMICA, 
+	se la puede utilizar para crear, agregar, eliminar y acceder a elementos de forma dinamica en tu propio programa.
+	ArrayList proporciona una mayor flexibilidad y facilidad de manipulacion en comparacion con los arreglos tradicionales creados en el main, 
+	ya que los arreglos creados con ArrayList son muy utiles para trabajar con colecciones dinamicas de datos cuyo tamaño puede cambiar durante
+	la ejecucion del programa. 
+
+	Diferencias entre los ArrayList y los arreglos tradiciones:
+		-tamaño y capacidad: los arreglos instanciados en el main tiene un TAMAÑO fijo determinado al momento de su creacion, en cambio los 
+		ArrayList tienen una capacidad inicial predeterminada que puede aumentar o reducirse automaticamente segun sea necesario para agregar 
+		o eliminar elementos.
+
+		-manipulacion de elementos: en un arreglo tradicional para poder agregar  o eliminar elementos es necesario crear un nuevo arreglo 
+		con un tamaño modificado donde seran almacenados los datos modificados del arreglo original, en cambio en los ArrayList puedes agregar 
+		elementos de forma dinamica llamando el metodo .add() y eliminar elementos llamando al metodod .remove() operaciones que se encargan 
+		de ajustar el tamaño de manera automatica segun sea requerido.
+
+		-flexibilidad de tipo: en los arreglos tradicionales se puede almacenar un solo tipo de objeto en cambio en los arreglos creados en 
+		ArrayList se puede almacenar cualquier tipo de dato, numeros enteros, cadenas de texto, objetos, etc.
+
+		-funcionalidad: en la clase ArrayList existen varios metodos que simplifican el acceso y la manipulacion de los datos almacenados en 
+		los arreglos, como por ejemplo: get(),set(),contain(), etc.
+
+
+
+CLASE 15 - MANEJO DE ERRORES:
+	Excepcion -> comprobadas: las que se pueden ver antes de la ejecucion del programa 
+		 -> no comprobadas: no se observan durante la escritura pero se detectan cuando se compila el codigo 
+	
+	dentro de las exepciones solamente se CAPTURAN (catch) y un programa lanza (throws) una exepcion en el momento que detecta los errores para MOSTRARLOS		
+	
+	EJ: -leer archivos que no existen
+	    -acceder a un elemento fuera del rango de elementos (out of bound)
+	    
+	Throwable class extends -> Exception class -> extends ->IOException (entrada y salida)
+			                              extends ->RuntimeException  (tiempo de ejecucion) -> NullPointerException (objetos o elementos nulos)
+									     -> ArithmethicException (detectados en la compilacion del codigo son de tipo matematicos)
+
+	Excepciones del tipo comprobadas o checked -> son excepciones de las cuales podemos recuperarnos, son errores externos al codigo
+	Exceptions del tipo inchequedas o uncheked -> errores de programacion, ejemplo querer leer un indice fuera del tamaño de un arreglo, se puede solucionar modificando el codigo
+									       ejemplo querer dividir por cero que da un error aritmethico
+	
+	MECANISMOS DE MANEJO DE EXCEPCIONES
+	try -> detecta excepciones
+	catch -> captura excepciones del metodo try 
+	throw -> expresion para levantar excepciones (ampliar)
+	throw -> indica las excepciones que pueden elevar un metodo (ampliar diferenciacion con throw)
+	finally -> bloque opcional utilizado principalmente con bases de datos o archivos!
+
+	AMPLIAR MANEJO DE EXCEPCIONES EN JAVA
+
+	Podemos crear clases propias de excepciones personalizadas para nuestras aplicaciones que sean clases hijas o extiendan de la clase exception 
+
+CLASE 16 - MANEJO DE ARCHIVOS (texto y binarios)
+
+	El uso de archivos en java permite interactuar con el sistema
+	de archivos, LEER Y ESCRIBIR DATOS, ALMACENAR INFORMACION de 
+	manera persistente y MANIPULAR archivos y directorios. Esto brinda
+	una amplia gama de posibilidades para el manejo de datos en programas
+	java y facilita la INTEGRACION con otras aplicaciones y sistemas que
+	que utilizan archivos como medio de intercambio de informacion.
+
+	El uso de archivos con extension .txt en java ofrece una forma coveniente
+	legible y ampliamente compatible de almacenar y compartir datos en forma 
+	de texto plano. Son utiles en una variedad de ensenarios, desde almacenar
+	registros simples hasta almacenar configuraciones de aplicaciones y datos
+	estructurados de manera sensilla.
+
+	El manejo de archivos se realiza utilizando las clases proporcionadas por
+	el paquere java.io.*; estas clases ofrecen funcionalidades para leer y 
+	escribir datos en archivos.
+
+	CLASES DEL PAQUETE java.io
+		-File: representa un ARCHIVO o DIRECTORIO, define metodos para conocer PROPIEDADES del archivo
+				.exists() -> devuelve un booleano si el archivo existen
+				.canWrite() -> devuelve un booleano si el archivo puede escribirse
+				.canRead() -> idem pero para leer
+				.isFile() -> devuelve un booleano que indica si el obj file es un archivo y no un directorio
+				.isDirectoty() -> devuelve un booleano que indica si el obj file es un directorio
+				.isAbsolute() -> devuelve un booleando que indica si la RUTA es absoluta o relativa
+ 				.length() -> devuelve el largo del archivo en bits
+				.lastModified() -> devuelve fecha de creacion en milisegundos
+				.getName() -> devuelve el nombre del archivo o directorio representado por el obj file
+				.getPath() -> devuelve la ruta del archivo o directorio representado por el obj file 
+				.setReadOnly() ->esteble el archivo como de solo lectura lo que impide la modificacion de su contenido 
+				.delete() -> devuelve booleano que indica si la eliminacion del archivo fue exitosa
+				.renameTo(File nuevo) -> cambia el nombre del archivo 
+		-PrintWriter: Permite escribir texto dentro de un archivo de texto
+		-FileWriter: permite escribir CARACTERES dentro de un archivo de texto
+		-BufferReader: nos permite LEER TEXTO en un archivo
+		-FileReader : nos permite LEER CARACTERES en un archivo de texto
+
+		¿Cuales son las diferencias entre BufferedReader y FileReader?
+
+		FileReader es una clase que se utiliza para leer CARACTERES de un archivo de texto, lee los
+		caracteres directamente desde el archivo en UNO por UNO, esto quiere decir que se crea una 
+		operacion de entrada y salida de informacion por CADA CARACTER del texto.
+		
+		Cuando se utiliza BufferReader se utiliza un area de memoria temporal o BUFFER para almacenar
+		una cantidad determinada de datos antes de que sean procesados lo que reduce enormemente las
+		operaciones de entrada y salida aumentando el rendimiento del programa al interactuar con
+		grandes volumenes de texto.  
+  
+
+CLASE 18: GENERICIDAD
+
+	La genericidad en Java es un concepto que permite crear clases, interfaces y metodos que pueden trabajar
+	con DIFERENTES TIPOS de datos de manera SEGURA y REUTILIZABLE, permite escribir codigo que se puede adaptar
+	a diferentes tipos sin necesidad de duplicar el codigo para cada tipo especifico. 
+
+	Permite crear poder una CLASE la cual puede tomar el ROL de cualquier otra clase
+	cuando tenemos muchas clases que pueden tener un comportamiento identico, puede resultar util crear
+	una clase que puede desarrollar el comportamiento de todas las clases implementadas en una sola. 
+	
+	Genericidad -> tecnicas para escribir -> algoritmos o crear contenedores -> variables genericas y parametrizables
+
+	La razon para implementar la genericidad es el hecho de que LOS ALGORITMOS de resolucion de numerosos problemas 
+	NO DEPENDEN DEL TIPO DE DATO. Un algoritmo que implementa una pila de caracteres es esencialmente igual al que 
+	es necesario para implementar una pila de numeros enteros o cualquier otro tipo de dato. 
+
+	Al utilizar la genericidad, se logra un codigo FLEXIBLE Y SEGURO ya que los tipos se COMPRUEBAN EN TIMPO DE COMPILACION
+	y se EVITAN errores de tipo en tiempo de ejecucion, ademas promueve la reutilizacion de codigo ya que se escribe una 
+	implementacion generica que funciona con multiples tipos de datos.
+	
+	Un buen ejemplo de esto es la clase ArrayList que ejecuta los mismos metodos una y otra vez independientemente del 
+	tipo de dato que implementa, pueden manejarse arreglos de enteros,caracteres,cadenas de texto, objetos, etc.
+	
+	CASOS DE USO: buscar y ampliar
+
+
+	
+	La genericidad se basa en el usode parametros de tipo (tambien conocidos como tipo generico o tipo parametrizado)
+	que se definen en la declaracion de la clase, interfaz o metodo, estos marcadores de tipo actuan como marcadores o
+	espacios reservados para un tipo especifico que se DETERMINA EN TIEMPO DE COMPILACION. 
+
+	DECLARACION de una clase generica:
+	
+		public class MiClase <T> {}
+	
+		<T> en este caso T es el parametros de tipo
+	
+	NOMBRES DE TIPOS GENERICOS:
+
+	<E> Element, se utiliza para representar un elemento generico en una estructura de datos o coleccion
+	<K> Key o Clave, usado en estructuras de datos basadas en claves, como los mapas de la clase Map
+	<N> Number, represeta cualquier tipo de numero como Integer, Double, ect.
+	<T> Type, se utiliza para representar cualquier tipo de dato generico.
+	<V> Value representa un valor o un par clave-valor como los mapas de la clase Map y repesenta un valor asociado a una clave. 
+	<S,U,V>	representar otros elementos adicionales, se utilizan cuando es necesario representar multiples parametros de tipo.
+
+	Cuando se crea una INSTANCIA de una clase generica, se proporciona el tipo concreto que se utilizara EN LUGAR del parametro
+	
+		MiClase<Integer> intancia = new MiClase<Integer>();
+
+	con el parametro <Integer> en remplazo de <T>, es importante destacar que estos nombres de tipo generico son solo convenciones
+	y NO ESTAN PREDEFINIDOS en el lenguaje de Java. Puedes utilizar cualquier nombre que sea descriptivo y siga las convenciones
+	de nombrado de variables.  	
+	
+	RESTRICCIONES AL TIPO DE DATO
+	
+	Solo de pueden implementar CLASES de referencia dentro de las clases genericas como por ejemplos clases propias o String, Integer,
+	denominadas como clases envolventes, NO SE PUEDE INSTANCIAR UNA CLASE GENERICA CON UN TIPO DE DATOS PRIMITIVO.
+	
+	Se pueden restrigir el tipo de datos que se implementan en una clase generica.
+
+		public class claseGenerica <T extends claseRestringida> {}
+		
+	esto significa que solo se pueden utilizar como argumentos de tipo en ClaseGenerica clases que sean subclases de ClaseRestringida.
+	
+	Al utilizar estas restricciones, se puede controlar y limitar los tipos de datos que se pueden utilizar en tus clases genericas,
+	lo que puede brindar mayor seguridad y garantizar que las operaciones sean validas y coherentes para los tipos de datos especificos. 
+	
+	METODOS GENERICOS O PLANTILLAS
+	
+	Los metodos genericos en java permiten crear metodos que pueden ser utilizados con diferentes tipos de datos sin tener que repetir
+	el codigo para cada tipo, estos metodos son como plantillas o moldes que se pueden adaptar a diferentes tipos de datos.
+	
+	La sintaxis basica de un metodo generico es: 
+	
+		public <T> void metodo(T parametro){}
+	
+	Aqui <T> es el parametro generico que se coloca antes del TIPO DE RETORNO, se puede utilizar cualquier letra o nombre descriptivo
+	para el parametro de tipo, en este ejemplo usamos T para indicar tipo.
+
+	El parametro del metodo tiene tipo T que es determinado en el tiempo de COMPILACION sefun el tipo de argumento pasado cuando se lo
+	invoca, el compilador se encarga de inferir el tipo adecuado basandose en el argumento proporcionado. 
+	
+	.Ejemplo: metodo para imprimir los elementos de un arreglo generico
+	
+		public <T> void imprimirArreglo(T[] arreglo){
+			for (T elemento : arreglo){System.out.println(elemento);}
+			}
+		este metodo puede ser invocado con diferentes tipos de arreglos como por ejemplo Integer[] arregloEntero = {1,2,3}, String[], etc
+		
+		imprimirArreglo(arregloEnteros);
+		
+		en cada invocacion el compliador infiere el tipo adecuado y asegura que los elementos del arreglo sean del tipo correcto. 
+	
+CLASE 19: MANEJO DE ARCHIVOS JSON
+	
+Json es un formato de archivo con una estructura universal, puede ser leido por cualquier lenguaje o tecnologia por lo cual es un estandar en el
+intercambio de datos, es ligero y facil de leer.
+
+Se basa en una sintaxis de OBJ y ARRAYS que permite representar datos complejos de manera sensilla, por lo cual es muy popular en el desarrollo web
+y desarollo de aplicaciones mobiles.
+
+JSONObject{}: clase que nos permite cargar objetos de cualquier tipo de dato y toma como argunmento una clave(String) y un valor(cualquier tipo de dato)
+posee metodos propios como el metodo PUT que permite cargar datos en un OBJ json y GET utilizado para obtener el valor de una clave. 
+Posee excepciones propias JSONException por lo que se debe tener en cuenta el uso de bloques try-catch.
+	
+JSONArray[]: clase que representa arreglo en formato json, que almacena objetos de tipo JSONObjet o cualquier tipo de dato, los elementos dentro del arreglo
+se separan por medio de una coma que se implementa de manera automatica, luego de ingresar un elemento por medio de un metodo. 
+Metodos: PUT(ingresa elementos), GET(acceder a un elemento), LENGTH(longitud del arreglo)
+
+Al leer un archivo de tipo json es importante visualizar con que comienza el archivo si una llave {} o un corchete [] para identificar si se trata de un 
+objeto que contiene otros objetos o un arreglo, esto determina como comenzamos a leer el archivo en nuestro codigo si con metodos de JSONObjet o JSONArray
+	
+	>CONSUMIR UNA API<
+
+	HttpClient = HttpClient.newHttpClient();
+	*instanciamos un cliente de la clase HttpCliente*
+	HttpRequest request = HttpRequest.newBuilder().uri(URL.create"html")).build();
+	*hacemos una consulta o request a una URL determinada para obtener informacion de esta url*
+	
+	Esto nos permite trabajar con informacion proporcionada por servidores en la web y de terceros.
+	
+
+CLASE 20: GIT Y GITHUB
+
+	<Temario>
+	-control de versiones
+	-que es git
+	-fundamentos git
+	-3 estados git
+	-que es una rama de desarrollo
+	-diferencias con github
+
+CONTROL DE VERSIONES:
+Sistema que registra CADA CAMBIO que se realiza en el
+codigo fuente de un proyecto a lo largo del tiempo.
+Permite RASTREAR las modificaciones, quien las hizo, cuando
+se realizaron y que se modifico en cada version.
+
+Es una herramienta fundamental para la gestion de un CODIGO
+FUENTE y la COLABORACION en equipo.
+
+La importancia del control de versiones:
+
+-Historial de cambios: Registro completo de todos los
+cambios realizados en el proyecto a los largo del tiempo,
+lo que FACILITA la revision de modificaciones anteriores,
+la IDENTIFICACIONES DE ERRORES introducidos y la comprension
+del progreso del proyecto. 
+
+-Colaboracion en equipo: Facilita la colaboracion entre 
+desarrolladores al proporcionar una plataforma CENTRALIZADA
+para compartir y sincronizar el codigo fuente, varios 
+desarrolladores pueden trabajar en DIFERENTES partes del 
+proyecto de forma simultanea y luego FUSIONAR sus cambios
+de manera controlada. 
+
+-Respaldo y recuperacion: Proporciona una forma de respaldar
+y recuperar versiones anteriores del proyecto.
+
+-Experimentacion y ramificacion: Permite crear ramas 
+independientes para experimentar con nuevas funcionalidades
+o realizar cambios poco seguros sin afectar la version
+principal del proyecto.
+
+-Control de conflictos: Ayuda a gestionar y resolver 
+conflictos cuando dos o mas desarrolladores trabajan en la
+misma parte del codigo, el sistema AYUDA a FUSIONAR estos
+cambios de manera adecuada para evitar la corrupcion
+del codigo.
+
+-Seguimiento de responsabilidades: Permite identificar 
+quien realiza cada cambio en el proyecto.
+
+
+¿QUE ES GIT?
+
+Git es un SISTEMA DISTRIBUIDO DE CONTROL DE VERSIONES 
+gratuito y de codigo abierto, esta diseñado para ofrecer
+un gran rendimiento, ocupar menos espacio en disco y para
+EVITAR LA NECESIDAD DE UN SERVIDOR CENTRAL para ser 
+distribuido. 
+
+FUNDAMENTOS DE GIT (9)
+
+1-Repositorios: EL PILAR de git son los repositorios, un
+repositorio es una CARPETA en la que se almacenan las dif
+versiones de los ficheros de un proyecto y el historial de 
+los cambios que se han realiazado en ellos. Un repositorio
+puede estar ubicado LOCALMENTE o puede ser REMOTO en un 
+servidor compartido, cada repositorio en git tiene una 
+copia completa del historial de cambios del proyecto.
+
+2-Instantaneas (Snapshots): A diferencia de otros sistemas 
+de control de versiones que solo almacenan cambios en 
+archivos, git guarda INSTANTANEAS de todo el estado del
+proyecto en un momento determinado, cada vez que se realiza
+un cambio (commit) git crea una nueva instantanea del 
+estado completo del proyecto.
+
+3-Ramas (Branches): Las ramas en git permiten crear lineas
+de desarrollo INDEPENDIENTES, cada rama es una copia 
+completa del repositorio con su propio historial de cambios,
+lo que permite a los desarrolladores trabajar en paralelo 
+sobre diferentes caracteristicas sin interferir con el 
+funcionamiento de la rama principal del proyecto, las ramas
+se pueden fusionar posteriormente para una integracion de
+los cambios para la evolucion del proyecto.
+
+4-Confirmaciones (Commits): Una confirmacion es un REGISTRO
+de cambios en git, lo que representa una nueva instantanea 
+del proyecto con uno o varios cambios realizados, cada uno
+de los commits tiene un identificador unico (hash) y contiene
+metadatos como el autor, la fecha, un mensaje de descripcion,
+lo cual forma un historial SECUENCIAL de cambios. 
+
+5-Arbol de trabajo (Working tree): Este termino se refiere
+al directorio o ruta en el sistema de archivos local donde
+trabaja cada desarrollador en su sistema.
+
+6-Fusiones (Merges): Git permite fusionar el trabajo de 
+varias ramas para combinar el trabajo conjunto de varios
+desarrolladores, al fusionar dos ramas git IDENTIFICA las
+DIFERENCIAS y APLICA los CAMBIOS de manera inteligente para
+crear una nueva instantanea que combina los cambios.
+
+	*Si existe algun conflicto git lo señala*
+
+7-Control remoto: Git permite la SINCRONIZACION de 
+repositorios remetos y locales, los repositorios remotos 
+permiten a varios desarrolladores trabajar en el mismo 
+proyecto, ademas proporciona comandos para clonar 
+repositorios, enviar cambios (push), recibir cambios 
+mediante (pull).
+
+8-Etiquetas (Tags): Se utilizan para marcar puntos especificos
+en el HISTORIAL del proyecto como versiones estables o hitos
+importantes. A diferencia de las ramas las etiquetas en git
+no se mueven con los nuevos cambios x lo cual se utilizan
+para referenciar versiones especificas del proyecto. 
+
+9-Ramificaciones locales y distribuidas: Al ser un sistema
+de versiones DISTRIBUIDO cada clon del repositorio contiene
+todo el historial y todas las ramas localmente, de esta 
+manera los desarrolladores trabajar de forma AISLADA en su
+propia copia del proyecto y luego sincronizan los cambios
+con otros repositorios, lo que facilita el trabajo en equipo
+fuera de linea.
+
+*Cada repositorio tiene, al menos, una rama principal*
+
+Normalmente a esta rama se le llama MAIN o MASTER esta rama
+principal es el tronco de un árbol desde el que podemos crear
+ramas para generar bifurcaciones de nuestro código.
+
+Al modificar los ficheros, los cambios se confirman y se 
+guardan en una rama contenida en el repositorio, siendo esta 
+rama el tronco principal o una de las bifurcaciones generadas.
+
+Si es una bifurcación es posible que esos cambios se integren
+en la rama principal (o en cualquier otra bifurcación) con
+mediante el proceso MERGE, que consiste en combinar los 
+cambios de una bifurcación con otra rama.
+
+Una vez se confirma ese proceso de combinación, podemos 
+llevar los cambios al repositorio remoto, mediante el
+proceso PUSH que literalmente es la acción de empujar
+nuestros cambios locales al servidor, de manera análoga,
+la acción inversa traer los cambios del repositorio remoto
+al local se llama PULL.
+
+
+LOS 3 ESTADOS DE GIT (flujo de trabajo)
+
+La transicion entre los estados de git es una parte fundamental del flujo de trabajo.
+
+1-Directorio de trabajo
+	->Creo,modifico o elimino los ficheros
+	->Preparo los cambios que se quieren grabar
+
+2-Stage area
+	->Confirmo los cambios que seran grabados en el repositorio
+
+3-Rrepositorio local
+	->Sincronizo los cambios con el repositorio en el servidor remoto
+
+4-Repositorio remoto
+	->Acceso de los repositorios de todo el equipo
+
+-Modificado (modified): Este estado se refiere a los archivos que estan sufriendo cambios en el directorio de trabajo, pero no se han marcado como confirmados, cuando modificas un archivo existente o creas un nuevo archivo git reconoce que se ha producido un cambio en el archivo y lo coloca en el estado modificado. Sin embargo estos cambios aun no sea han registrado en el historial de git. 
+
+-Preparado (staged): Cuando deseas incluir los cambios realizados en los archivos modificados en tu proximo commit debes agregarlos al area temporal transitoria o stage area, al marcar los archivos modificados como preparados para confirmar git los coloca en el estado preparado. Dentro de esta area puede seleccionar que cambios seran incluidos en tu proximo commit. 
+
+-Confirmado (committed): Una vez que los archivos fueron marcados al estado de confirmados esto significa que los cambios se han registrado de forma permanente en el repositorio local de git, cada confirmacion representa una instantanea del estado completo del proyecto al momento de la confirmacion, los commits se guardan en el historial del repositorio y se les asigna un identificador unico en el momento de la confirmacion. 
+
+¿QUE ES UNA RAMA?
+
+Una rama o Branch es una VERSION de la coleccion de DIRECTORIOS y ARCHIVOS del repositorio, cada vez que se crea una rama se crea una copia de la coleccion de archivos actual. 
+
+En un entorno de colaboracion donde diferentes personas estan trabajando en un mismo codigo, se genera una evolucion del codigo en PARALELO, mientras alguien trabaja en una funcionalidad otra persona puede trabajar en solucionar un bug y asi sucesivamente, aqui es donde radica la importancia de las ramificaciones del tronco principal. 
+
+DIFERENCIAS ENTRE GIT Y GITHUB
+
+Git y GitHub son dos conceptos relacionados pero diferentes en el mundo del desarrollo de software. 
+
+Git es un sistema de control de versiones distribuido en si mismo, mientras que GitHub es una plataforma de alojamiento y colaboracion BASADA en Git, uno se implementa en entornos locales y privados mientras que GitHub es un servicio en la nube para compartir, colaborar y administrar proyectos de Git de manera remota.
+
+
+CLASE 22 INTRODUCCION A INTERFASES GRAFICAS
+Herramientas de desarrollo JavaFX
+
+JavaFX es una libreria utilizada para la creacion de interfases graficas destinadas a la implementacion en el ESCRITORIO.
+
+JavaFX -> interfases graficas de escritorio -> diseñadas para el manejo de EVENTOS, animaciones y multimedia.
+
+	(programacion orientada a eventos)
+
+Otra biblioteca para la creacion de interfases graficas es la biblioteca SWING que resulta obsoleta en este momento por lo cual es mas utilizada la libreria de JavaFX.
+
+Ventajas:
+.integracion nativa con Java(sin descargas adicionales)
+.soporte multimedia
+.escalable (adaptabilidad de entornos)
+.compatibilidad multiplataforma
+
+>CONFIGURACION DE NUESTRO IDE en las diapo<
+
+CLASE APPLICATION
+Esta clase es la clase BASE de cualquier aplicacion JavaFX y debe ser extendida por cualquier clase principal.
+ 
+La clase Application posee metodos propios como el metodo start() que deben ser sobreescritos por la clase principal para una implementacion propia de cada clase.
+
+El metodo main debe ser ejecutado luego del metodo start ya que el metodo start inicia la ventana donde sera ejecutado el metodo main.
+
+CLASE STAGE
+Representa la VENTANA principal de la aplicacion
+
+Esta ventana puede contener una o mas ESCENAS o pantallas, ademas posee sus metodos propios.
+
+CLASE SCENE
+Define el contenedor principal de los elementos de la interfaz grafica, todos los NODOS o elementos graficos como botones, etiquetas, textos, etc.
+
+La escena contiene un CONTENEDOR raiz llamado PANE o GROUP que delimita y define el ordenamiento del resto de los nodos.
+
+Con los metodos de la clase Scene podemos definir sus atributos como Width, Height, Background, ect.
+
+CONTROL DE EVENTOS
+Desde la interfaz grafica podemos CAPTURAR EVENTOS y configurar una respuesta por parte de la aplicacion. 
+
+
+
+
+
+
+	

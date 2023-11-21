@@ -1,0 +1,386 @@
+INTRODUCCION A SQL
+(Structure Query Language)
+
+QUE ES UNA BASE DE DATOS
+
+Conjunto de datos organizados y 
+estructurados segun un determinado
+modelo informatico.
+
+Tienen una estructura independiente
+de programa por el que se accede por 
+lo tanto son MULTIPLATAFORMA.
+
+SQL (LENGUAJE DE CONSULTA)
+
+DBMS
+
+Sistema de gestion de base de datos,
+es un software que administra y 
+gestiona la informacion que incluye
+una base de datos.
+
+Tiene como objetivo servir de interfaz
+entre el usuario, la base de datos y 
+el lenguaje de consulta. El principal
+o mas difundido es MySQ para la
+manipulacion, administracion y de mas 
+de las bases de datos relacionales.
+
+resumen
+BaseDeDatos(sql)->dbms(MySQL)->Lenguaje de consulta ()
+
+BASES DE DATOS RELACIONALES Y NO RELACIONALES
+
+RELACIONALES -> SQL
+.se relaciones medinte tables
+.estructuradas
+.se manejan por medio de consultas
+
+NO RELACIONALES -> NO SQL
+.performance: sistemas mas optimos
+en cuanto a velocidad sobre todo
+cuando se trabaja con grandes vol 
+de datos. 
+.escalabilidad: grandes vol  
+.recuperacion de datos
+.implementadas en las empresas con 
+servicios de redes sociales por ejm
+
+
+CLASE 1
+creacion de una estructura de base de datos en la cual
+realizamos CONSULTAS
+la finalidad de la base de datos es almacenar informacion de manera permanente en un software y hardaware determinados.
+
+Bases de datos SQL
+-relacionales: datos relacionados entre si
+-persistentes: la vida de los datos guardados es permanente
+-ddl y dml: lenguaje de declaracion (atribuidos a un sola clase) y lenguaje de manipulacion (). 
+-tipado: debe ser declarado el tipo de dato que es introducido
+en todos los casos al igual que en java. 
+
+TABLAS
+
+nuestra manera de almacenar datos es atravez de tablas que
+son siempre las mismas plantillas, funcionan como una
+iteracion de una clase Tabla almacenando pares de clave
+valor.
+
+filas: cada fila es un REGISTRO
+columnas: cada columna es un ATRIBUTO
+
+Primary Key (PK): en las bases de datos
+relacionales el primer atributo de un
+registro posee un IDENTIFICADOR UNICO
+llamado clave primaria, la cual lo va 
+a distinguir de todo el restro de los 
+registros dentro de las relaciones de
+las tablas.
+
+
+CARACTERISTICAS DEL MODELO RELACIONAL
+.cada tabla debe tener un NOMBRE UNICO
+.los datos de cualquier columna posee
+UN SOLO TIPO DE DATO.
+.cada columna es un ATRIBUTO
+.el orden de los atributos no afecta 
+a la implementacion de la tabla. 
+.no se permiten filas repetidas
+(implementacion de la PK)
+
+RELACIONES ENTRE TABLAS:
+
+Una relacion es una asociacion que se 
+crean entre tablas para vincular y 
+garantizar la integridad referencial de
+sus datos.
+
+Foreign Key (fk): clave foranea o
+externa, clave que se implementa en 
+una tabla para enlazarla al id de un
+registro perteneciente a OTRA TABLA.
+
+LAS RELACIONES ENTRE TABLAS SON
+BIDIRECCIONALES!
+
+TIPOS DE RELACIONES (cardinalidad):
+las bases de datos tienen dif tipos de 
+realciones que se utilizan para VINCULAR
+las tablas, este vinculo depende de la
+cantidad de ocurrencias dentre de una 
+tabla a otra.
+
+
+
+
+
+PALABRAS RESERVADAS DEL LENGUAJE MYSQL
+
+SELECT
+INSERT
+DELETE
+UPDATE
+WHERE : especificar datos de trabajo 
+
+Tipos de datos: 
+
+int: numeros enteros
+float: numeros decimales se le pueden asignar tamaño 
+predeterminados float(cantidadEnteros, cantidadDecimales)
+char: cadena de texto con logitud fija, el campo
+ocupa el max de caracteres aunque el dato ingresado sea
+menor.
+varchar: cadena de texto sin limite asignado, el campo
+que ocupa se adapta al largo de la cadena alamacenada,
+por lo tanto es mas eficiente que el char.
+tinytext: 255 caracteres.
+text: texto LARGOS
+date: fecha YYYMMDD
+time: hora hh:mm:ss
+datetime: fecha y hora
+year: rango 1901 - 2155
+bit/bool: 0.1/false.true
+blob: archivos de gran tamaño
+tinyint: rango de -128/127
+
+COMANDOS EN SQL
+Comandos DDL: lenguaje de definicion de datos
+Comandos DML: lenguaje de manipulacion de datos
+
+DDL:
+-create
+-rename
+-truncate:ignorar relaicones entre tablas
+-alter:alterar
+-drop:eliminar
+
+ATRIBUTOS DE COLUMNAS O RESTRICCIONES
+-default
+-references
+-primary key
+-unique
+-foreign key
+
+COSULTAS PARA BORRAR Y ACTUALIZAR DATOS:
+-ALTER TABLE
+ >Modificaciones:
+  -RENAME TO
+  -RENAME COLUMN
+  -ADD
+  -DROP
+  -MODIFY COLUMN
+  -ALTER COLUMN
+  -CHANGE: 
+
+DML:
+-select: select * from producto; * indica todos los registros o se pueden elegir los campos que se desean obtener de a uno. 
+-insert: INSERT INTO fabricante VALUES (id,"nombre");
+-delete/where: elimina registros DE UNA TABLA, en caso de no utilizar el where se eliminan TODOS los registros
+ DELETE FROM producto WHERE precio < 200;
+-update: UPDATE producto SET nombre = "Mouse", precio = 5000 WHERE idProducto = 10;
+
+CREACION DE BASE DE DATOS:
+>Comandos:
+ CREATE DATABASE tienda;
+ CREATE DATABASE IF NOT EXISTS tienda;
+
+IMPLEMENTACION DE BASE DE DATOS:
+>Comandos:
+ USE tienda;
+
+CREACION DE TABLAS
+>Comandos:
+ CREATE TABLE nombreDeTabla (pares clave valor,);
+ NOT NULL : dato obligatorio
+ DEFAUL: comando por defecto 
+ 
+MANIPULACION DE TABLAS
+
+INSERT INTO usuario (id, nombre, edad, salario, fecha_nacimiento, fecha_registro, es_activo, descripcion)
+VALUES
+(1 , "Juan Perez" , 20 , 150000 , "1995-05-05" , "2023-12-06 19:00:00", 1 , "Juan es poco piola"),
+(2 , "Juan Carlos" , 30 , 180000 , "1993-06-06" , "2023-12-06 19:00:00", 1 , "Juan Carlos es un chupa pija");
+ 
+SELECT*FROM usuario; 
+SELECT id, nombre, edad FROM usuario;
+SELECT id, nombre, edad FROM usuario WHERE edad=30;
+SELECT id, nombre, edad FROM usuario WHERE edad<30 
+SELECT*FROM usuario...
+
+AND nombre LIKE "A%" "%O" "%A%"
+
+(like es un comando que indica similitud a...)
+("A%" indica que A es la letra inicial y % indica que hay contenido luego de la A) -> se leeria A y resto del contenido
+
+(%O) valor con contenido y que temrine en O
+(%A%) valor que contenga una A en el medio
+
+ORDER BY valor ASC/DESC;
+
+tenemos un ordenamiento de manera asecendente (ASC)
+o desendente (DESC) 
+
+SELEC DISTINCT edad FROM usuario;
+devuelve todos los datos con distinto valor pero
+solo una vez, sin importar la cantidad de veces
+que se repite el dato en la base de datos.
+
+USE nombreBaseDeDatos;
+Comando en el workbench para poder utilizar 
+una base de datos que ya teniamos creada. 
+
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+Primary key hace referencia a que sera la llave 
+primaria o la valor de IDENTIFICACION primario de
+el respectivo valor de tabla.
+
+email VARCHAR(255) NOT NULL UNIQUE 
+UNIQUE indica que el valor debe ser UNICO en TODA
+la base de datos, no se puede repetir jamas el 
+mismo valor.
+
+INSERTAR UN ID DE UNA TABLA EN OTRA
+
+cliente_id INT NOT NULL,
+FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+
+foreign key hace referencia a una llave EXTERNA 
+especificada como (cliente_id) como dato interno 
+de nuestra tabla y references refiere al dato de 
+la tabla cliente valor id. De esta manera el valor
+del id en la tabla cliente queda grabado como valor
+cliente_id en la tabla que nosotros enlazamos. 
+
+DROP TABLE nombreTabla
+comando para borrar tablas de la base de datos.
+
+COMANDO JOIN: RELACIONES PK Y FK
+relaciones que ayudan a UNIR nuestros datos
+
+LEFT JOIN
+INNER JOIN
+RIGHT JOIN
+
+Ejemplo practico 
+
+SELECT pedidos.id AS numeroDePedido,
+cliente.nombre AS nombreDelCliente, 
+pedidos.producto, 
+pedidos.precio
+FROM pedidos
+INNER JOIN cliente ON pedidos.cliente_id = cliente.id;
+
+Inner Join lo que hace es unir los datos de las 
+tablas en una situacion especifica, para todos
+los pedidos con cliente_id = id en la tabla cliente
+une los datos y los muestra como una sola tabla por 
+consola
+
+FUNCIONES DE CONSULTA
+
+ALTER TABLE: obtenemos el poder de modificar los
+datos de nuestra table una vez que ya fue creada.
+
+>ADD COLUMN: agrega una colunma nueva
+>MODIFY COLUMN: modifica el tipo de dato
+>CHANGE COLUMN: cambia el nombre de la columna
+>DROP COLUMN: elimina una columna 
+
+
+FUNCIONES AGREGACION: 
+
+AVG (AVEREGE): obtenemos un resultado del promedio
+del valor que le pasamos como parametro, edad, 
+compras, precios, cantidad de productos, etc.
+SELECT AVG (edad) FROM usuario;
+
+FUNCION SUM (suma): suma de todos los valores
+asociados a una variable
+
+select sum(precio) as total from pedidos where clinte_id=1;
+
+realiza la suma de los precios de los pedidos del cliente con id = 1
+
+COUNT: podemos CONTAR todos los registros que cumplen con una condicion determinada, devuelve un valor numerico.  
+
+MIN & MAX: podemos obtener el minimo y el maximo valor de registro de un atributo
+en particular.
+
+FUNCIONES ADICIONALES: 
+
+BETWEEN: seleccinar valores entre un maximo y un minimo
+
+ROUND: redondear valores numericos a enteros
+
+GROUP BY: agrupa filas o registros en funcion de un 
+valor determinado y compartido. Muy utilizado para resumir
+informacion en tablas, por lo cual no se puede agrupar un 
+conjunto de registros si no existe una funcion de agregacion
+que la manipule.
+
+SELEC COUNT(id), pais FROM personas GROUP BY pais;
+
+INNER JOIN usuarios ON publicaciones.usuarioID = usuario.id; 
+-> inner join : unir tabla usuarios
+-> on : con la tabla publicaciones CUANDO
+el numero usuario.id es igual a usuarioID.
+
+ACTUALIZACION Y ELIMINACION DE DATOS (update y set):
+
+UPDATE usuario
+SET nombre = "nuevo nombre"
+WHERE id = 1;
+
+Actualizar en la tabla usuario el valor de nombre para
+el id correspondiente a 1.
+
+
+CONSULTAS MULTITABLAS:
+al trabajar con bases de datos relacionales, tenemos
+tablas relacionadas entre si por lo tanto deben existir
+SENTENCIAS para unificar la informacion. Aquie aparecen
+los JOIN
+
+>INNER JOIN: solo los registros en comun entre dos tablas,
+ 
+ SELECT * FROM table1 INNER JOIN table2 ON table1.key = table2.key
+ 
+ SELECT nombre, nombreCurso FROM profesores INNER JOIN cursos ON profesores.id =  cursos.id_profesores;
+
+devuelve la INTERSECCION entre las tablas, mostrando el nombre del profesore y
+el nombre del curso asociado a su id.
+
+>LEFT JOIN: selecciona los valores de la tabla1 y los que comparte con la tabla2
+ 
+ SELECT * FROM table1 LEFT JOIN table2 ON table1.key = table2.key
+
+ SELECT nombre, nombreCurso FROM profesores p LEFT JOIN cursos c ON p.id =    c.id_profesores;
+
+al devolver la interseccion y los valores presentes en la tabla1 la contruccion
+como resultado puede tener registros con valores nulos debido a que no es 
+necesario que todos los valores de tabla1 tengo una interseccion en tabla2
+
+>RIGHT JOIN: es igual a left join pero al reves selecciona la interseccion y los
+valores presentes en la tabla2 con y sin coicidencias en tabla1.
+
+ SELECT * FROM table1 RIGHT JOIN table2 ON table1.key = table2.key
+
+ SELECT nombre, nombreCurso FROM profesores p RIGHT JOIN cursos c ON p.id =      c.id_profesores;
+ 
+devuelve la interseccion y los valores presentes en la tabla2 y la construccion
+como resultado puede contener valores nulos. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

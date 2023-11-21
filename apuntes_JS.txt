@@ -1,0 +1,322 @@
+Temas a repasar
+	.Que es una variable?
+	.Diferencias entre const y let
+	.Tipos de datos (String, Number, etc.)
+	.Arreglos y sus métodos
+	.Objetos
+	.API
+
+	
+UNA VARIABLE
+
+Una manera corta de definir una variable es como 
+un espacio en memoria al cual se le asiga un VALOR
+o un OBJETO.
+	
+Pero, en terminos generales, una VARIABLE es un NOMBRE
+simbolico que se asocia a un VALOR, o un OBJETO el cual
+puede utilizarse para acceder y manipular a los datos 
+almacenados en los mismos. 
+
+VARIABLE-nombre en memoria->acceder y manipular->datos-almacenados->VALOR U OBJETO 
+
+(una variable es el nombre simbolico asociado a una espacio
+en memoria que se utiliza para acceder y manipular a los datos
+almacenados en un valor o un objeto)
+    
+Existen diferentes maneras de declarar varaibles en js
+de las cuales const y let son las dos principales y su 
+principal diferencia es que CONST se utiliza para declarar 
+variables que no cambian su VALOR durante la ejecucion del 
+programa, mientras que LET se utiliza para declarar variables
+cuyo valor puede ser modificiado. 
+
+    2 Diferencias principales
+    - Asignacion de valores: nuevamente hablamos de la posibilidad
+      de modificar los valores en let y no en const
+
+    - Inicializacion: una varaible declarada con const debe ser 
+      inicializada al momento de su creacion, pero una variable 
+      let puede ser declarada sin la necesidad de iniciaizar su valor. 
+
+Es importante el TIPO DE DATO que se almacena en un varaible,
+ya que el tipo de dato define el rango de valores que pueden 
+almacenarse en la variable asi como el tipo de operaciones que 
+pueden realizarse con esos valores.
+
+    ESTO CAPAZ SUENA REPETITIVO PERO ATENTO!
+
+    Las variables se encuentran ASOCIADAS a un tipo de DATO
+    para que el lenguaje de programacion SEPA como almacenar
+    y manipular los valores en la memoria del programa
+
+    EN CONSECUENCIA DE LOS ANTERIOR:
+   
+    La principal DIFERENCIA entre un VALOR y un OBJETO es que
+    los valores estan asociado a UN SOLO TIPO DE DATOS y los 
+    OBJETOS y ARREGLOS estan asociados a VARIAOS TIPOS DE DATOS!
+
+TIPOS DE DATOS: 
+	-int: numeros enteros
+	-double: numeros decimales
+	-boolean: true,false
+	-char: caracteres sueltos
+	-String: cadena de caracteres
+	-{}: obejtos 
+	-[]:arreglos
+	-null: valor nulo
+	-undefined: sin definir
+
+DIFERENCIA ENTRE NULL Y UNDEFINED:
+null se utiliza cuando se quiere asignar de manera INTENCIONAL un valor nulo a una variable mientras 
+que undefined se utiliza cuando una variable NO HA SIDO ASIGNADA a ningun valor, como por ejemplo cuando
+hacemos referencia en el programa a una variable que NO EXISTE o una propiedad (en un objeto) que tampoco 
+existe. Estas seran referenciadas como undefined y no como null ya que null debe ser intencionalmente
+declarado como valor.
+
+ARREGLOS
+Un arreglo o array es una ESTRUCTURA ORDENADA DE DATOS que se utiliza para almacenar
+una coleccion ordenanda de VALORES. Estos valores pueden ser cualquier tipo de datos,
+como numeros, cadenas de texto, objetos, funciones y otros arreglos a los cuales
+llamamos elementos. Cada elemento dentro del arreglo tiene una posicion o INDICE que 
+comienza en 0 (cero) e incrementa en 1 por cada elemento adicional, por lo tanto si 
+un arreglo tiene 3 elementos sus indices correspondientes son 0, 1 y 2.
+
+    Existen diversas funciones en js destinadas a la manipulacion y la modificacion de los
+    datos en el arreglo, por ejemplo agregar, eliminar o modificar elementos. 
+
+    MEOTODOS para manipular datos
+        nombreArray.push(elemento1, elemento2, elementoN): agregar uno o mas elementos al final del array
+        
+        nombreArray.unshift(elemento1, elemento2, elementoN): agrega uno o mas elementos al principio del array 
+        
+        nombreArray.pop(): elimina y devuelve el ultimo elemento del arrays
+        
+        nombreArray.shift(): elimina y devuelve el primer elemento del array
+        
+        nombreArray.splice(indice, cantidad, elemento1, elementoN): agrega o elimina elementos en cualquier posicion
+            acepta al menos 2 parametros, elimina la "cantidad" de elementos desde el "indice" proporcionado
+            y agrega los "elementoN" tantos como se le indique.
+        
+        nombreArray.slice(inicio, final): retorna una copia de una porcion del arreglo desde el indice inicio
+            hasta el indice final, sin incluir el final.
+        
+        nombreArray.concat(arreglo1, arreglo2, arregloN): retorna un NUEVO arreglo que contien los elementos del 
+            arreglo original seguido de los elementos de los arreglo especificados, ademas de un arreglo se
+            se puede utilizar para concatener un valor.
+        
+        nombreArray.reverse(): Invierte el orden los elementos en el arreglo
+        
+        nombreArray.sort((a, b)=>a-b): Se utiliza para ordenar los elementos de un arreglo en su lugar, es decir, sin crear 
+            un nuevo arreglo si no que sobreescribe el actual. La funcion comparadora del parametros toma los dos parametros 
+            ingresados y dependiendo si el primer parametro es menor,mayor o igual al segundo reorganiza los elementos,
+            en este caso si la diferencia entre a-b es negativa a es menor que b y debe ir primero, si son igual devuelve 0 
+            y si b es menor que a devuelve un valor positivo y b debe ir primero. En caso de no ingresar un parametro este
+            metodo ordenanda los valor de menor a mayor y por orden alfabetico si se trata de caracteres.
+        
+        nombreArray.forEach(funcion(elemento, indice o arreglo){cuerpoDeLaFuncion}): se utiliza para iterar sobre los elementos 
+            del array, es decir, que permite ejecutar una "funcion" determinada para cada elemento en el array.
+            Este metodo puede recibir hasta 3 argumentos el valor del "elemento" actual, el "indice" de dicho elemento y el
+            "arreglo" sobre el cual se esta iterando. Es IMPORTANTE aclarar que esta funcion no crea un nuevo arreglo para esto 
+            se debe dar intrucciones en la funcion a ejecutar para crearlo.
+        
+        nombreArray.filter(funcion(elemento, indice o arrglo)): permite crear un nuevo arreglo a partir de otro, seleccionando 
+            unicamente los elementos que cumplen con la condicion especificada en el argumento. Este metodo recibe una funcion
+            como argumento la cual debe devolver un valor booleano (T/F) lo principal en el argunemento es la funcion que
+            determina como son filtrados los elementos, esto se ve mas claramente en los ejemplos.
+
+        nombreArray.reduce(funcion,acumulador o valorActual): permite procesar y unir todos los valores de un arreglo en un solo resultado, se puede
+            utilizar para realizar sumas totales, promedios, multiplicaciones y concatenar cadenas de texto. acepta como parametros un
+            "acumulador o valorInicial" que funciona como la base donde comienza el procesamiento y la union de los datos, y el valorActual 
+            que resulta opcional ya que al omitirse el metodo simplemente toma como valor inicial el primer valor del arreglo:
+                ej: const nuevoArray = arrayOriginal.reduce((acumulador, valorActual) => acumulador*valorActual);
+                    retorna un nuevo arreglo que contiene la multiplicacion de todos los elementos
+                     
+                    const nuevoArray = arrayOriginal.reduce((acumulador, valorActual) => acumulador + valorActual);
+                    retorna un nuevo arreglo que contiene el valor de sumar todos los elementos del array
+
+                    cont nuevoArray = arrayOriginal.reduce((acumulador, valorActual) => acumulador + " " + valorActual);
+                    retorna un nuevo arreglo cuyo unico valor es una cadena de texto que contiene todos los elementos de array origianl
+                    separados por un espacio. 
+
+        nombreArray.map(function(valorActual, indice, nombreArray o this.elemento){cuerpoDeLaFuncion}): se utiliza para crear un NUEVO array a partir de
+            un array existente aplicando una funcion a cada uno de los elementos del arrayOriginal por lo tanto esto metodo retorna una array con la misma
+            longitud del arrayOriginal pero con todos sus elementos modificados. La funcion que se pasa como paramtro debe devolver el valor transformado
+            del elemento actual. Un ejemplo muy simple de esto:
+                ej: const nuevoArray = arrayOriginal.map(funcion(this.elemento){return this.elemento*2})
+                    retorna un nuevo array con todos los elementos del array nuevo multiplicados por 2
+
+OBJETOS 
+Si bien JS es un lenguaje de programacion orientada a obejtos (OOP) no utiliza el sistema de herencia de clases y superclases como otros lenguajes como
+Java o Python, en cambio JS utiliza un modelo basado en PROTOTIPOS para la programacion orientada a objetos. 
+En lugar de clases en JS se crean OBJETOS a traves de FUNCIONES CONSTRUCTORAS o OBEJETOS LITERALES, los cuales sirven como plantillas para la creacion 
+de nuevos objetos que HEREDAN las propiedades y metodos del objeto padre. 
+    
+Este proceso se conoce como  HERENCIA PROTOTIPICA, en este tipo de herencia cada objeto tiene un tipo enlace interno a otro objeto llamado prototipo 
+(el prototipo del obj padre se convierte en el prototipo del obj hijo) si una propiedad o metodo no se encuentra en el obj hijo se busca en el prototipo 
+del obj padre y si no se encuentra ahi se busca en el prototipo del prototipo y asi sucesivamente hasta que se encuentra el valor o se llega al final 
+de la cadena de prototipos.
+
+Por lo tanto aunque JS no utiliza el sistema de clases y superclases utiliza la herencia prototipica, entonces los OBJETOS en JS son INSTANCIAS de
+FUNCIONES CONSTRUCTORAS y de OBJETOS LITERALES de los cuales heredan propiedes y metodos. 
+
+LA HERENCIA es uno de los conceptos principales en la programacion orientada a objetos, ahorra tiempo y esfuerzo al programar y ayuda a crear jerarquias
+de clases mas claras y organizadas, lo que permite ademas un facil ampliamiento y modificcion del sistema. 
+
+    Otro concepto importante en la OOP es el ENCAPSULAMIENTO, este consiste en agrupar datos y metodos relacionados en una sola unidad llamada OBJETO ocultando
+    su complejidad y al igual que la herencia es un tanto diferente en el entorno de JS. 
+    En JS el ENCAPSULAMIENTO de los DATOS puede lograrse mediante el USO de VARIABLES PRIVADAS y METODOS DE ACCESO para encapsular un conjunto de variables y 
+    limitar su acceso desde fuera de una funcion, pero no atravez de la implementacion de clases publicas y privadas. 
+
+    El tercer y ultimo concepto fundamente de la OOP es el POLIMORFISMO que permite a obj diferentes comportarse de forma similar, una forma de polimorfismo en 
+    JS es por medio de la herencia prototipica ya que al heredar propiedades y metodos de otros objetos se permite la creacion de obj similares con comportamientos
+    ligermente difentes, lo que permite reutilizar el codigo de manera eficiente y modular. 
+
+    EN RESUMEN la OOP se centra en el uso de objetos para representar ENTIDADES DEL MUNDO REAL en un sistema modular facil de mantener y ampliar, donde los objetos 
+    interactuan de manera segura y eficiente, se organizan en jerarquias y se comportan de manera diferente segun el contexto en el cual se utilizan. 
+
+    DEFINICION DE OBJETO
+        En js los objetos son ESTRUCTURAS de datos que se utilizan para ALMACENAR y ORGANIZAR informacion en PARES CLAVE: VALOR, cada clave es un identificador unico
+        que se utiliza para acceder a su valor correspondiente, estos valores pueden almacenar diferentes tipos de datos e incluso otros arreglos, funciones u otros 
+        objetos.
+
+        Los obj se pueden crear de varias formas, la mas comun es atravez de la SINTAXIS LITERAL de obj que consiste en encerar la lista de pares clave: valor, entre llaves
+            Ej-> let persona = {nombre:"juan",edad:20,altura:1.80};
+
+        Los obj tambien se pueden crear por medio de una FUNCION CONSTRUCTORA y el operador new, lo que permite crear multiples objetos con la misma estructura y comportamientos
+        haciendo de los obj creados a partir de este constructor INSTANCIAS de la funcion constructora utilizada como molde. 
+            Ej -> function Persona(nombre,edad,altura){this.nombre = nombre; this.edad = edad; this.altura = altura}
+    
+        Otra forma de crear INSTACIAS de otros objetos es atravez de la implementacion del SPREAD OPERATOR, atravez del mismo se puede crear un obj copia de otro obj existente
+        y modificar o agregar propiedade y funciones. 
+            Ej -> let persona2 = {...persona, propiedadNueva: valorNuevo} -> se crea un obj persona2 que hereda todas las propiedades de persona y una propiedad nueva y unica
+        
+API (Application Programming Interface)
+
+Es un conjunto de funciones, metodos y protocolos
+que permiten la comunicacion y la interaccion entre
+diferentes aplicaciones de software, proporciona una
+forma ESTRUCTURADA y PREDETERMINADA de acceder y utilizar
+los servicios y funcionalidades de una aplicacion.
+
+Cuando se trabaja con una API en Js es necesario ENVIAR
+SOLICITUDES a traves de un protocolo adecuado como HTTP
+para interactuar con los servicios proporcionados por la API.
+
+Una de la formas mas comunes de enviar solicitudes a una API
+en Js es utilizando la funcion fetch() y los metodos http
+de GET,POST,PUT y DELETE se utilizan en conjunto con fetch() 
+para realizar acciones especificas en una API. 
+
+.Get: el metodo get se utiliza para OBTENER datos de un 
+ servidor y se incluye de manera automatica al implementar
+ el metodo fetch().
+
+.Post: el metodo post se utiliza para ENVIAR nuevos datos
+ al servidor, en este caso fetch() envia una solicitud con
+ nueva informacion a la url especificada con los datos
+ especificados en el body de la solicitud, estos datos deben
+ ser transformados en formato JSON antes de ser enviados.
+
+.Put: el metodo put se utiliza para ACTUALIZAR datos existentes
+ en el servidor, en este caso put envia una solicitud con los
+ datos actualizados en el cuerpo de la solicitud, los cuales
+ deben ser convertidos a formato JSON antes de ser enviados.
+
+.Delete: el metodo delete se utiliza para eliminar datos del
+ servidor, fetch() envia una solicitud a la url especificada
+ para eliminar los datos correspondientes en el servidor, la
+ respuesta en el servidor se verifica utilizando la propiedad
+ "ok" de la respuesta, si la respuesta es true los datos
+ fueron eliminados correctamente. 
+
+El uso de fetch() implica proporcionar la URL de la Api a la 
+que se desea acceder y especificar las opciones de la solicitud
+como los metodos(method:) los encabezados(headers:) y los datos 
+a enviar(body:).
+
+	Cuerpo basico de la implementacion de fetch():
+
+	fetch(`URL`, {method:,headers:{},body:JSON.stringify()})
+
+	 .then(response => response.json())
+   	 .then(data => {prosesamiento de los datos})
+	 .catch(error => {manejo de errores en la solicitud})
+
+	fetch-> realiza una solicitud y devuelve una promesa then
+	then-> promesa que recibe la respuesta y transforma la 
+		respuesta a un formato legible por js ya que el 
+		lenguaje de los servidores es json y no es legible
+		si no es transformado.
+	then-> los datos obtenidos se implementan y procesan dentro 
+		de la funcion como data
+
+
+CREACION DE SERVIDORES
+La creacion de servidores con Node.js y Express es una
+exelente opcion para crear servidores robustos y escalables.
+
+Node.js
+Es un entorno de EJECUCION de Js desde el lado del servidor,
+a diferencia de Js en el navegdor que se ejecuta en el
+entorno del cliente, node.js permite ejecutar JavaScrip
+en el servidor, lo cual quiere decir que con un solo
+lenguaje podemos programar aplicaciones web completas
+tanto desde el lado del cliente como en el servidor.
+
+Express
+Es un Framework minimalista y flexible para Node.js que
+facilita la creacion de aplicaciones web y APIs.
+Proporciona una capa de abstraccion sobre las funciones
+basicas de node lo que permite manejar rutas, solicitudes
+y respuestas entre otros.
+
+	>Pasos para la creacion de un servidor<
+
+	1.Instalacion de Node.js y npm en tu equipo.
+	2.Configuracion del servidor, debes importar
+	  Express en tu archivo principal y crear una
+	  instancia de la aplicacion express a partir 
+	  del cual puedes definir las rutas necesarias
+	  para tu aplicacion.
+	3.Definicion de rutas, Express proporciona dif
+	  metodos para manejar las solicitudes HTTP y 
+	  definir las rutas correspondientes. Estos son
+	  app.get,app.post,app.put,app.delete.
+	4.Middlewares, en Express estas son funciones que
+	  se ejecutan antes o despues de manejar una
+	  solicitud, pueden ser utilizados para realizar
+	  tareas como analisis de datos, autenticacion,
+	  validacion, manejo de errores, etc.
+	5.Ejecucion del servidor, con el metodo app.listen
+	  debes especificar en que puerto podras recibir
+	  y responder a las solicitudes HTTP.
+
+	>Creacion en codigo<
+	
+	*Importamos los modulos express*
+	const express = requiere('express');
+	
+	*Creamos una instancia de la aplicacion*
+	const app = express();
+
+	*Definimos el puerto*
+	const port = 3000;
+
+	*Definicion de rutas*
+	-ruta de la pagina principal-
+	app.get('/',(req,res)=> {res.send("Mensaje");});
+	
+	-ruta alternativa info usuarios-
+	app.get('/user/:id',(req,res)=> {
+	    const userId = req.params.id;
+	    res.json({datos usuario})	
+	    });
+	
+	*Ejecucion del servidor*
+	app.listen(port, ()=>{console.log("servidor enlazado")})
+
+
+    
+
+

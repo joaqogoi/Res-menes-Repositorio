@@ -1,0 +1,1418 @@
+APUNTES SPRINGBOOT - clases utn
+
+CLASE 0 - REPASO DATOS | OPERACIONES | CLASES 
+
+Tipos de datos
+-datos primitivos predefinidos por el lenguaje
+-datos no primitivos CLASES definidad por el lenguaje
+
+una diferencia inportante es la implementacion de cada uno
+debido principalmente a las operaciones que se pueden 
+realizar con cada uno, los dato no primitivos nos permiten
+mayor cantidad de operaciones y mayor complejidad en las 
+mismas 
+
+>Paq Java.lang:
+Este es un paquete especial de java que es importado
+automaticamente en cada archivo fuente de java. Las 
+clases de este paquete son consideradas escenciales
+y son ampliamente utilizadas en la mayoria de los
+programas.
+
+>>Clases del paq Java.lang:
+    1.Object: La clase Object es el SIMIENTO de la JERARQUIA
+    de las clases en java, todas las clases en java ya sean
+    definidas por el usuario o proporcionadas por java heredan
+    de la clase Object, es debido a esto que CADA INSTANCIA 
+    de CUALQUIER clase es tambien una instancia de Object lo
+    que permite un comportamiento uniforme debido a los metodos
+    comunes de la clase Object.
+    La clase Object desempeña un papel fundamental en el polimorfismo
+    en java, debido a que todas las clases en java heredan de la clase
+    Object se puede tratar a CUALQUIER objeto como un objeto Object,
+    lo que permite almacenar diferentes tipos de obj en una misma
+    coleccion (como una lista o un array) o pasarlos como argumentos
+    a metodos que esperan obj Object. Si es necesario utilizar esos
+    obj como su TIPO REAL puedes realizar un casting desde Object a
+    el tipo especifico de su clase real. 
+
+    >>Metodos comunes de la clase Object:
+        .equals(Object obj): es un metodo que permite comparar dos
+        objetos que permite determinar si son iguales en contenido,
+        sin embargo, por defecto la implementacion de equals verifica
+        si los dos objetos apuntan al mismo espacio en memoria,
+        es decir, si son la misma instancia. Por lo tanto, para
+        analizar la equivalencia en contenido este metodo debe ser
+        sobreescrito para realizar compraraciones mas significativas. 
+
+        .hashCode(): este metodo se utiliza principalmente en
+        estructuras de datos de tipo hashMap para mejorar la
+        eficiencia en la busqueda y organizacion de los elementos
+        almacenados en este tipo de estructura. Sin embargo, su
+        importancia va mas alla de la su uso en estructuras hashMap.
+        La forma en que se calcula el valor de hash puede varias
+        segun su implementacion pero generalmente se basa en los
+        valores de los atributos del objeto, por lo que es importante
+        sobreescribirlo correctamente cuando se sobreescribe el
+        metodo equals para mantener una consistencia, ya que
+        dos objetos que son iguales segun el metodo equals, deben
+        de tener el mismo valor de hash. Esto es fundamental para
+        garantizar que los objetos se comporten de forma coherente
+        en todas las operaciones relacionadas con hash incluso
+        si no los estas utilizando en una estructura de datos
+        basada en hash.
+
+        .toString(): este metodo se utiliza para obtener una
+        representacion de cadena de caracteres, por defecto su
+        implementacion en la clase Object devuelve una representacion
+        que incluye el nombre de la clase y una representacion 
+        hexadecimal de la direccion en memoria del objeto. Por lo
+        cual es comun la sobreescritura del metodo en clases propias
+        para proporcionar una representacion mas significativa de 
+        los objetos en cuestion.
+
+        .getClass(): este metodo devuelve un OBJETO de tipo Class
+        que contiene informacion sobre la clase del objeto sobre el
+        que fue casteado, el objeto de la clase Class posee metodos
+        que permiten obtener detalles sobre los metodos, atributos
+        y mas sobre la clase a la cual apunta. No es recomendable su
+        uso a menos que el diseño del programa apunte a la creacion
+        de clases dinamicas ya que complejiza ampliamente la naturaleza
+        del programa y puede limitar el uso de recursos.
+
+    2.
+
+CLASE 1 - REPASO FUNCIONES 
+
+diferencia entre subprogramas y funciones:
+    > los subprogramas no tienen retorno son void,
+    las funciones por su parte tienen un retorno. 
+
+Encapsulamiento, acceso public y private:
+    El uso de estos modificadores tiene un impacto en el 
+    encapsulamiento tanto en la visibilidad como la
+    accesibilidad de la funcion donde se lo utiliza.
+
+        >public: es accesible desde cualquier parte del programa,
+        siempre que se tenga acceso a la clase en cuestion.
+
+        >private: es accesible unicamente desde la clase donde
+        es creada la funcion y no puede ser invocada desde ninguna
+        otra parte del programa. 
+
+    La diferencia principal en su uso determina el nivel de encapsulamiento
+    que reciben los datos y las funciones, ya que al tratarse de una
+    funcion que no es visible o accesible sirven para ocultar los procesos
+    internos del programa lo cual protege la integridad de datos.  
+
+Sintaxis funciones > [acceso][modificador][tipo] nombre(parametros){}
+Sintaxis subprogramas > [acceso][modificador]void nombre(parametros){}
+
+Modificador static:
+    >Se utiliza para crear variables o metodos que PERTENECEN
+    a la CLASE en lugar de a UNA INSTANCIA especifica de la misma,
+    esto quiere decir que las variables y metodos staticos se
+    comparten entre todas las instancias de la clase y pueden ser
+    invocados solo con el nombre de la clase sin la necesidad de
+    crear una instancia especifica. 
+    >Las variables stacticas se inicializan cuando se carga la clase
+    en la memoria y existen durante toda la ejecucion del programa.
+    >Los metodos staticos NO PUEDEN accesder ni modificar variables
+    de instancias no estaticas. 
+
+ARREGLOS: VECTORES Y MATRICEZ
+    Un arreglo es un contenedor de obj que tiene un tamaño
+    especifico que es declarado al crear el arreglo y ademas
+    posee un unico tipo de obj que puede contener.  
+
+Sintaxis vectores:
+    >tipo[] nombre = new tipo[tamaño]
+
+Sintaxis matriz:
+    >tipo[][] nombre = new tipo[filas][columnas]
+
+
+
+CLASE 2 - POO Y COLECCIONES
+
+POO - Programacion orientada a objetos
+>Paradigma de la programacion general donde se crean 
+instancias de objetos (con propiedades unicas y funcionalidades)
+similares a los de la vida real que son utilizados para
+resolver problematicas estructuradas en clases y objetos. 
+
+
+>Definicion de Paradigma:
+    Un paradigma es un ENFOQUE O ESTILO particular para
+    diseñar, estructurar y escribir programas. 
+    Define la forma en la que los programadores deben abordar
+    la resolucion de problemas y la organizacion de su codigo.
+    Cada paradigma tiene sus propias reglas, principios y 
+    conceptos fundamentales que guian la estrcutura que tomara
+    el codigo.
+
+Objetos: Instancia de una clase que posee sus propios atributos
+y comportamiento, en terminos mas generales es una abtraccion
+conceptual del mundo real que posee un estado y un comportamiento.
+
+    >intanciando un nuevo obj:
+     Clase nombreDelObj = new Clase();
+
+     Clase = clase a la que pertenece el obj que se esta creando
+     nombreDelObj = nombre o clave con el que se identificara el obj
+
+Encapsulamiento:
+    El encapsulamiento es uno de los 4 conceptos fundamentales
+    de la programacion orientada a objetos, junto con la
+    herencia, el polimorfismo y la abstraccion.
+    Fundamentalmente el encapsulamiento trata del ocultamiento
+    de los datos internos de un programa y su manipulacion.
+    Una clase agrupa datos (variables o atributos) y metodos 
+    (funciones) relacionados con su minima unidad funcional
+    los objetos o instancias de clase, por medio de los
+    cuales se puede acceder y manipular dichos datos.
+
+    El encapsulamiento tiene dos objetivos principales:
+        1.Ocultar la complejidad: al ocultar los detalles
+        internos de una clase se simplifica su uso y se
+        reduce la complejidad para que otros objetos puedan
+        interactuar con ella, lo que facilita el mantenimiento
+        y la escalabilidad del codigo. .
+
+        2.Proteger los datos: si solos los metodos definidos dentro
+        de la clase pueden acceder y modificar los datos internos,
+        esto evita que los datos sean manipulados de manera
+        incorrecta o no autorizada lo que contribuye a la integridad
+        y la seguridad de un programa.
+    
+    El encapsulamiento se IMPLEMENTA mediante el uso de
+    MODIFICADORES DE ACCESO, estos controlan la visibilidad 
+    y accesibilidad de los miembros de una clase, es decir, 
+    los atributos y los metodos desde fuera de la clase.
+
+        >Public: Los miembros declarados como public son
+        accesibles desde cualquier parte del programa, sea
+        desde la misma clase, en clases externas o incluso
+        desde otros paquetes.
+
+        >Private: Los miembros declarados como private ya
+        sean atributos o metodos solo son accesibles dentro
+        de la misma clase, por lo cual para poder acceder a 
+        estos es necesario la implementacion de METODOS DE 
+        ACCESO definidos como GETTERS Y SETTERS.
+
+        >Protected: Es un modificador que se utiliza dentro
+        del concepto de herencia para permitir que las clases
+        que extienden de una clase padre puedan acceder  a los
+        miembros de la clase padre, lo que facilita la herencia.
+        Los miembros declarados como Protected son accesibles y
+        modificables dentro de las clases de un mismo paquete y 
+        por las clases hijas de una clase padre. NO ACCESIBLES 
+        desde clases fuera del paquete de la clase padre. 
+
+FRAMEWORK
+
+    En el contexto de la programacion un framework es un 
+    marco de trabajo o una ESTRUCTURA que proporciona un
+    CONJUNTO ESTANDARIZADO de conceptos, practicas, 
+    criterios y herramientas para abordar un conjunto 
+    especifico de problemas relacionados.
+
+    Su objetivo principal es ofrecer una base solida y coherente
+    para desarrollar aplicaciones de manera mas eficiciente,
+    reutilizando componentes y adoptando buenas practicas.
+
+    Java Collections Framework es un marco de trabajo que
+    simplifica y estandariza la manipulacion de colecciones
+    de datos en java, proporciona una serie de interfaces 
+    y clases que permiten a los desarrolladores abordar
+    problemas relacionados con el manejo de datos de manera
+    eficiente y reutilizable. 
+
+COLECCIONES
+
+    En java las colecciones se refieren a las clases que 
+    forman el FRAMEWORK de Collections del paquete java.util,
+    las cuales estan diseñadas principalmente para la 
+    manipulacion y gestion de datos en estructuras de datos
+    como listas, conjuntos y mapas. Este FRAMEWORK proporciona
+    una amplia gama de clases e interfaces que permiten
+    el almacenamiento, la organizacion y el acceso a datos
+    de manera eficiente. 
+
+    Una coleccion en programacion representa una agrupacion
+    de OBJETOS conocidos como elementos de clases que se 
+    almacenan y organizan de una manera especifica para su
+    posterior utilizacion. Estas colecciones pueden contener
+    cualquier tipo de objetos incluso los de clases propias,
+    la unica restriccion es que no se pueden crear colecciones
+    que almacenan datos primitivos, en su lugar debemos utilizar
+    tipos de objetos equivalentes a estos como Integer, Float,
+    String, Character, etc.
+
+    Esto significa que cuando queremos guardar datos primitivos
+    en una coleccion, debemos convertirlos, una propiedad que
+    facilita esto es el "AUTOBOXING" y "UNBOXING" que al trabajar
+    con colecciones se encargar la conversion automatica entre
+    tipos de datos primitivos y objetos de clases equivalente.
+
+
+En el desarrollo del curso nos centramos en el uso de las colecciones:
+    >listas
+    >conjuntos
+    >mapas
+
+Instancias de Listas:
+    >ArrayList: ArrayList<Integer> numeros = new ArrayList<>();
+    >LinkedList: LinkedList<Integer> numeros = new LinkedList<>();
+  
+
+Clase ArrayList: 
+    Se implementa como un arreglo de tamaño variable, se comporta
+    como un arreglo de tipo vector pero con comportamiento dinamico
+    ya que a medida que se agregan elementos su tamaño varia y posee
+    metodos propipos que nos permiten una manipulacion mas variada.
+
+    Metodos de la clase ArrayList:
+    >>>ampliar
+
+Clase LinkedList:
+    Se implementa como una lista de doble enlace, su rendimiento al 
+    agregar y quitar elementos es mas eficiente que el un ArrayList
+    pero su rendimiento con metodos getters y setters no es optimo. 
+    >>>ampliar
+
+    implementacion de iterator en LinkedList >>> ampliar
+
+Clase Set (conjuntos):
+    Los sets modelan una coleccion de objetos de una misma clase
+    donde cada elemento APARECE UNA SOLA VEZ, no acepta duplicados
+
+Clase HashSet:
+
+Clase TreeSet: 
+
+Clase LinkedHashSet:
+
+MAPAS:
+    Los mapas modelan un objeto a travez de un conjunto llave-valor
+    que son ingresados al momemento de crear un mapa, las llaves no
+    pueden repetirse pero los valores si.
+
+ 
+CLASE 4 - RELACIONES Y HERENCIA 
+
+CLASE 5 - INREODUCCION A LAS APIS 
+CONSUMO DE APIS TIPO REST 
+
+cliente -> http -> url -> servidor
+
+CLASE 6 - INTRODUCCION A SPRING 
+
+FRAMEWORK: 
+Spring es un framework orientado a la
+construccion de programas empresariasles con un paq
+de herramientas que forman la familias spring, 
+destinadas a diferentes funciones. 
+Subdivide el codigo en partes mas pequeñas y llamdas
+beans (que son basicamente los obj)
+
+Proporciona un modelo de programacion orientada a
+aspectos -> obligacion de responzabilidades
+
+Este paradigma de la programacion nos obliga a llevar
+buenas practicas ya que nos proporciona una estructura
+bien defenida.
+
+modulos de spring:
+1.spring core
+    base del framework y funcionalidades loC y DI
+2.spring mvc
+    patron de modelo vista controlador, crear controladores
+    manejo de solicitudes HTTP y creacion de aplicaciones web
+3.spring data 
+    simplifica el acceso a bases de datos jpa, mongodb
+4.spring security
+    gestion de autenticacion, autorizacion, permisos, etc 
+5.spring boot
+    simplifica la configuracion y el desarrollo de aplicaciones
+    y gestion de dependencias automatizada.
+
+Configuracion del IDE
+MAVEN: es una herramienta de sofware para la gestion
+y construccion de proyectos java que utiliza POM,
+para DESCRIBIR el proyecto a contruir, sus dependencias
+de otros modulos, componentes externos y el orden de
+construccion de los elementos. Este modelo de configuracion
+esta basado en el formato XML o pom.xml.
+
+POM: Proyect Object Model -> plantilla con etiquetas
+
+En nuesto proyecto podemos decirle a maven que necesitamos
+un archivo jar determinado y maven lo descargada de internet
+automaticamente. Esto funciona atravez de las dependencias,
+estas se recopilan en un archivo pom.xml dentro de la etiqueta
+dependencias. 
+
+PASOS FUNDAMENTALES DE SPRING BOOT
+1.SELECCION DE JARS CON MAVEN
+2.CREAR LA APLICACION 
+3.DESPLEGAR UN SERVIDOR 
+
+REPAZAR PRINCIPIOS SOLID 
+
+INTRODUCCION A SPRING FRAMEWORK
+
+<<Que es spring framework>>
+<<Beneficios y caracteristicas de Spring>>
+<<Arquitectura y modulos de Spring>>
+<<Configuracion>>
+
+¿Que es un framework?
+    Un framework es un CONJUNTO de herramientas, bibliotecas y criterios
+    ESTANDARIZADOS que te ayudan a desarrollar aplicaciones de manera
+    mas eficiente, rapida y que siguen una MISMA LINEA DE PRODUCCION.
+    Con esto ultimo queremos decir que te proporciona una estructura 
+    predefinida y sistematica de trabajo lo que permite enfocarse en la
+    logica especifica de una aplicacion en lugar de ocuparse de los
+    detalles tecnicos o repetitivos, ademas esta diseñado de un forma en
+    la cual es necesario seguir buenas practicas para el desarrollo de 
+    codigo.
+
+¿Que es Spring framework?
+    Podemos imaginar a spring framework como una caja de herramientas,
+    de las cuales cada una cumple un funcion especifica para hacer mas
+    simple el trabajo, como manejo de bases de datos, instalacion de obj,
+    seguridad y encriptacion, etc.
+    Cada una de estas herramientas conforma lo que suele llamarse como:
+
+    FAMILIA SPRING
+    .Spring Framework
+    .Spring Boot
+    .Spring Data 
+    .Spring Security 
+    .Spring Cloud 
+    .Spring HATEOTAS 
+    .Spring Batch
+    .Spring Android
+
+Programacion Orientada a Aspectos (POA)
+
+Spring proporciona un modelo de programacion orientada a aspectos
+que es un paradigma de la programacion que permite una adecuada
+MODULARIZACION de las aplicaciones y posibilita una mejor separacion
+de responsabilidades, por lo que actua como un complemento de POO.
+Gracias a POA se pueden encapsular los diferentes conceptos que
+componen una aplicaciones en entidades bien definidas, eliminando
+las dependencias entre cada uno de ellos. 
+
+    Conceptos clave de POA:
+    1.Modularizacion y separacion de responsabilidades:
+        POA se centra en dividir una aplicacion en modulos que representan 
+        responsabilidades especificas. Cada modulo aborda un aspecto 
+        particular de la aplicacion, como el registro, la seguridad,
+        las transacciones, el registro de errores, etc. Esto permite agrupar
+        el codigo relacionado a cada modulo de manera cohesiva e independiente.
+
+    2.Encapsulacion de aspectos: 
+        En aplicaciones tipicamente aparecen preocupaciones que se
+        extienden a traves de multiples partes del codigo, como la
+        seguridad, el registro de eventos, etc (responsabilidades 
+        mencionadas en el concepto desarrollado de Modularizacion) 
+        estas preocupaciones son denominadas transversales ya que se 
+        extienden atravez de multiples componentes. Dentro de un "aspecto"
+        se definen reglas y comportamientos relacionados al manerjo de
+        estas preocupaciones, por lo tanto un aspecto es un modulo que se
+        encarga de la gestion de una preocupacion particular que sera
+        implementado en diferentes partes del codigo cuando sea requerido,
+        los aspectos incluyen logicas que les permiten identificar puntos
+        especificos en el flujo de ejecucion donde deben de aplicar sus 
+        reglas (estos puntos son denominados puntos de corte).
+        Si bien este concepto suena muy similar al de Modularizacion son
+        diferentes, ya que el encapsulamiento de aspectos esta orientado 
+        al desarrollo de modulos para la intervencion en el flujo de ejecucion
+        y la Modularizacion y separacion de responsabilidades son principios
+        de DISEÑO mas amplios que se aplican en la organizacion general y
+        estructura del codigo.
+
+    3.Eliminacion de Dependencias Cruzadas:
+        Tambien conocida como eliminacion de acoplamiento o reduccion de
+        acoplamiento es un principio importante de la POA y se refiere a
+        la accion de minimizar las relaciones de dependencia entre
+        diferentes componenetes, modulos o clases en un sistema de sofware.
+        El objetivo principal de eliminar estas dependencias es crear un 
+        diseño mas flexible, mantenible y facil de entender, parte del
+        enfoque de la Modularizacion se encarga de esta reduccion de
+        acoplamiento entre los modulos, utilizar interfaces y clases
+        abstractas en lugar de depender de implementaciones concretas crea
+        una capa de separacion que facilita la sustitucion de componenetes
+        sin afectar otras partes del sistema. Otra tecnica que se utiliza
+        con este objetivo es la de INYECCION DE DEPENDENCIAS que permite
+        suministrar o inyectar dependencias a un componente desde el exterior
+        en lugar de que el componente lo genere de manera interna, lo que
+        reduce las dependicas fuertes y hace a los componenetes independientes
+        y reutilizables. Este concepto es el mismo utiliza la INYECCION 
+        DE ASPECTOS lo que implica la introduccion de codigo relacionado con
+        un aspecto o preocupacion en un punto especifico de ejecucion conocidos
+        como puntos de corte. 
+
+En resumen, la POA es una tecnica que funciona como complemente a 
+la POO y permite dividir una aplicacion en modulos independientes 
+llamados aspectos, cada aspecto se encarga de una preocupacion
+especifica y se puede inyectar en puntos de ejecucion relevantes,
+esto mejora la modularizacion, la reutilizacion y la mantenibilidad
+del codigo al tiempo que elimina las dependencias cruzadas permitiendo
+una mejor separacion de responsabilidades para el desarrollado de sofware.
+
+Arquitectura de Spring
+
+    La Arquitectura de este framework se basa en varios componenetes
+    que trabajan  juntos para proporcionar una plataforma robusta y
+    flexible para desarrollar aplicaciones.
+    Posee 3 componentes principales:
+        .Contenedor
+        .Inversion de control
+        .Inyeccion de dependencias
+    
+    Contenedor de Spring:
+        El contenedor de Spring tambien conocido como Aplicattion 
+        Context es el corazon del framework ya que es el responsable
+        de crear, configurar y administrar los objetos de la app, que
+        en spring son denominados "beans", que son simplemente obj 
+        o instancias que se configuran y administran por el contenedor,
+        atravez del principio de Inversion de Control (IoC).
+        Existen diferentes mecanismos para realizar estas tareas, en
+        este curso las realizaremos mediante la configuracion basada
+        en anotaciones, estas anotaciones se escriben con un @ delante
+        y se incorporan al codigo fuente para definir los beans y sus
+        dependencias. Durante la ejecucion el contenedor de spring 
+        busca estas anotaciones y crea a los objetos en funcion de ellas.
+    
+    Inversion de Control:
+        Spring implementa el principio de IoC, que explicado de manera
+        sensilla, significa que en lugar de nosotros ocuparnos del control
+        de ciertas funcionalidades (en este caso serian los beans que 
+        forman nuestra app) se los delegamos al framework, es decir,
+        invertimos el control.
+
+    Inyeccion de dependencias:
+        Una dependencia es cuando un objeto o componenete requiere el
+        uso o acceso a otro objeto o componenete para realizar un funcion.
+        En Spring la gestion de estas dependencias se lleva a cabo
+        automaticamente mediante la INYECCION de dependecias (DI).
+        Esta DI permite que los objetos obtengan las dependecias necesarias
+        sin tener que crearlas explicitamente dentro de si mismos, en lugar
+        de que un objeto cree o busque manualmente sus dependecias Spring 
+        se encarga de proporcionarlas automaticamente. 
+        Utilizando el sistema de anotaciones le indicamos al contenedor que
+        un bean tiene una dependecia mediante la anotacion @Autowired 
+        esto le indica al contenedor que INYECTE la instancia de la dependecia
+        necesaria en el bean correspondiente.
+        
+        ¿Cuales son las responsabilidades que le delegamos al framework
+        con la DI?
+
+        -Intancia del objeto
+        -Ciclo de vida del objeto
+        -Configuracion del objeto
+
+Modulos de Spring Framework
+
+.Spring Core:
+    Proporciona la base del framework y las funcionalidad de IoC y DI
+
+.Spring MVC:
+    Es un modulo basado en el patron Modelo-Vista-Controlador que
+    permite crear controladores, manejar solicitudes Http y respuestas
+    por lo que facilita la creacion de aplicaciones web. 
+
+.Spring Data:
+    Simplifica el acceso a bases de datos al proporcionar una capa
+    de abstraccion sobre tecnologias de persistencia.
+
+Spring Security:
+    Proporciona funcionalidades de seguridad para aplicaciones, como 
+    autenticacion, autorizacion, gestion de seciones y proteccion.
+
+Spring Boot:
+    Es una extension de Spring que simplifica la configuracion y el
+    desarrollo de aplicaciones, ofrece una configuracion automatica
+    inteligente, un servidor web embebido y herramientas para la
+    gestion de dependencias. 
+
+
+PRIMER PROYECTO CON SPRING
+
+    ECOSISTEMA DE ETIQUETES
+
+        El ecosistema de etiquetas en Spring se refiere al conjunto 
+        de anotaciones (etiquetas) que se utilizan para configurar
+        y controlar el comportamiento de las clases y los componentes
+        en una aplicacion Spring. Estas etiquetas son parte fundamental
+        de la inyeccion de dependencias (DI) en Spring. 
+
+        @Component: es una etiqueta mas general para marcar una clase
+        como componenete gestionado por el contenedor de Spring.
+        
+        @Service: es una especializacion de @Component y se utiliza para
+        marcar las clases como un servicio, lo que indica que la clase
+        tiene un proposito o funcion especifica.
+
+        @Repository: se utiliza para marcar las clases que funcionan como
+        bases de datos para el sistema. 
+
+        @Controller: se utiliza para marcar las clases que controlan las
+        solicitudes web, es decir, el manejo y procesamiento de solicitudes
+        Http, estas clases pueden contener metodos que se encargan del mapeo
+        URL y que generan respuestas en diferentes formatos, por ejemplo
+        pueden tener metodo que se encarguen de devolver vistas Html o datos
+        en formato JSON o XML, dependiendo del manejo que se implemente en
+        la solicitud.
+
+        @RestController: es una anotacion especial que combina @Controller
+        con @ResponseBody, se utiliza para crear metodos o controladores 
+        RESTful que devuelven objetos serializados en formato Json o XML
+        como respuesta Http. Sigue los principios de la arquitectura REST 
+        (Representational State Transfer) que se encarga de gestionar las
+        solicitudes Http entrentantes y proporcionar respuestas adecuadas,
+        lo que permite el intercambio de datos eficicientemente atravez de
+        la web. De esta manera los metodos marcados con la etiqueta 
+        @RestController poseen dos funciones principales el MAPEO URL y la
+        SERIALIZACION DE LOS DATOS a formato JSON o XML para que asi sean 
+        mas faciles de consumir desde la logica del navegador.
+
+        @Configuration: se utiliza para marcar clases como un fuente de 
+        configuracion para el contenedor de Spring, esto quiere decir que
+        la clase contiene informacion para la configuracion de la App, 
+        ademas puede contener metodos marcados como @Bean y @ComponentScan
+        para definir y configurar beans de forma programatica remplazando 
+        de alguna manera a un archivo XML. Los metodos marcados con @Bean
+        crearan produciran objetos administrados por el contenedor permitiendo
+        la creacion de beans y configuraciones personalizadas en tu App.
+
+        @Autowired: esta etiqueta es fundamental para Spring ya que es la 
+        que permite la inyeccion de dependencias de manera automatica, asi
+        reduce la necesidad de codigo de inicializacion manual. Cuando se 
+        coloca la etiqueta @Autowired en un atributo, constructor o metodo 
+        setter de una clase Spring automaticamente busca un bean que coincida
+        con el tipo del atributo, el tipo del parametro del constructor o 
+        el parametro del metodo en el contexto de la aplicacion para realizar
+        la inyeccion de este bean en tiempo de ejecucion de manera automatica.
+
+
+    Mapeo URL:
+        Un controlador RESTful define las rutas URL que puede manejar, esto
+        se hace marcando metodo con las etiquetas @RequestMapping, @GetMapping
+        @PostMapping, @PutMapping y @DeleteMapping para especificar que metodos
+        del controlador deben responder a que ruta. 
+
+CLASE 10 - REPASO DE MYSQL
+
+    desarrollar
+
+CLASE 11 - PERSISTENCIA DE DATOS JPA ORM
+
+    JPA - Java Persistence API (api)
+    ORM - Object Realtional Mapping (fw)
+    DBMS - Manejador De Base de Datos (fw)
+    JDBC - Java Data Base Consults 
+
+    JPA - implementa -> ORM -> interactuan -> DBMS 
+
+        Toda esta interaccion correlacional funciona atraves de un ecosistema de etiquetas
+        como la gran mayoria de las implementaciones de Spriog boot
+
+        Las tablas son representadas en java como la instancia de una clase u obj o mejor
+        dicho como una entidad, por lo tanto la etiqueta @Entity permite el manejo de las
+        consultas SCRUM de manera automatizada. 
+    
+        JPA y ORM en conjunto se encargan del mapeo de las interrealaciones correspondientes
+        entre objetos, atributos de clases y las tablas en la base de datos 
+
+    Consultas personalizadas @Query
+
+        La anotacion @Query en Spring Data JPA se utiliza para definir
+        consultas personalizadas en el lenguaje JPQL (Java Persistence
+        Query Language) o SQL nativo. 
+
+        El JPQL es un lenguaje de consulta orientado a objetos que utiliza
+        entidades y campos de entidad en lugar de tablas y columnas SQL,
+        es decir realiza consultas basado en las propiedades de un objeto
+        "entidad" como sus atributos.
+
+        Ejemplo:
+
+            @Query("SELECT p FROM Entidad_producto p WHERE p.autor.nombre = :nombreAutor")
+            List<Entidad_producto> buscarProductosPorNombreAutor(@Param("nombreAutor") String nombreAutor);
+
+            ->@Query indica la consulta en lenguaje JPQL
+            ->List<> buscar...(){} indica el metodo de la clase repositortio
+
+            SELECT p: indica que estas seleccionando obj p como una ´Entidad_producto´
+            FROM Entidad_producto p: indica la entidad en la que se realiza la seleccion
+            WHERE: establece la condicion para la seleccion
+            p.autor.nombre = :nombreAutor: indica que filtramos productos en funcion del nombre del autor
+            :nombreAutor: es un parametro que se utiliza para pasar el nombre del autor como argumento al Query
+            @Param("nombreAutor"): es de donde se recolecta el nombre como parametro desde el metodo
+
+            Al ser llamado desde un servicio este metodo se ejecutara y devolvera
+            una lista de productos filtrados por el nombre del autor
+
+CLASE 12 - LOMBOK
+
+    Lombok es una biblioteca en java que simplifica la cantidad de codigo
+    repetitivo en la contrcuccion de nuestras clases de java, por medio de
+    su implementacion podemos sustituir los getter, setter, contructores,
+    y metodos comunes como toString() por etiquetas autometizando la
+    construccion de los mismos durante la compilacion del programa.
+
+    La parte mas importante para su implementacion es su configuracion
+    en el archivo pom.xlm 
+
+    <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.20</version>
+    <scope>provided</scope>
+    </dependency>
+
+    SINTAXIS:
+
+        Su correcta implementacion debe hacerse por medio de etiquetas en
+        nuestras clases, se las coloca antes de la declaracion de clase 
+        para indicarle al programa que deme automatizar su contruccion
+
+        import Lombok.AllArgsContructor;
+        import Lombok.Getter;
+        import Lombok.NoArgsConstructor;
+        import Lombok.Setter;
+
+        @Entity
+        @AllArgsContructor
+        @NoArgsConstructor
+        @Getter @Setter
+
+        Luego la contruccion de la clase continuar de manera regular
+
+CLASE 13 - MANEJO DE EXCEPCIONES
+
+CLASE 18 - PRUEBAS UNITARIAS
+
+    Las pruebas unitarias son un enfoque de prueba de sofware que se
+    centra en evaluar las partes mas pequeñas y aisladas de un programa,
+    es decir, las funciones y los metodos individuales.
+
+    Caracteristicas
+
+        1.Aislamiento : simulacion de dependencias, bases de datos,
+          servicios externos, archivos, etc.
+        2.Automatizacion : pruebas escritas en codigo por nosotros
+          y se ejecutan automaticamente, los resultados se comparan
+          con los resultados esperados.
+        3.Rapidez : rapidas de ejecutar, lo que facilita la deteccion
+          temprana de errores en etapas tempranas de desarrollo.
+        4.Documentacion: las pruebas unitarias funcionan como una especie
+          documentacion viva del codigo ya que deja un registro de como
+          se espera que se comporte el codigo en determinadas situaciones
+        
+    Paradigma TDD (Test-Driven Development):
+        
+        Es una metodologia de desarrollo de sofware que se enfoca en la
+        escritura de pruebas unitarias antes de escribir el codigo en 
+        produccion, su enfoque gira en torno a tres pasos clave:
+
+        Ciclo TDD:
+        1.Red: escribir primero los casos de prueba fallida
+        2.Green: escribir las pases de pruebas
+        3.Refactor: luego de que el codigo paso la prueba con exito
+          y a sido implementado se reescribe el codigo para hacerlo
+          mas limpio y eficiente sin cambiar su comportamiento
+
+    Herramientas
+
+        .JUnit (framework): ecosistema de etiquetas para pruebas 
+        .Mockito (framework): simulador de objetos reales para pruebas (mocks obj)
+        .AssertJ (biblioteca): creacion de afirmaciones (comportamiento esperado - assertions)
+        .H2DataBase (SQL-DataBase): creacion de base de datos en tiempo de ejecucion
+    
+    SPRINGBOOT TEST:
+
+        Ya que springboot es un framework que trabaja por capas es evidente
+        que las pruebas unitarias deben hacerse por capaz, desde la mas
+        elemental a la mas compleja
+
+        Repositortio -> Servicio -> Controlador
+
+        La capa de entidades al ser una capa principalmente de mapeo ORM
+        y no de servicios o metodos no requiere de pruebas unitarias
+
+        Al estar trabajando con springboot cuando descargamos la plantilla
+        para nuestro proyecto de SB-Initializer tambien descargamos las
+        dependencias necesarias para el testo de nuestro proyecto.
+
+        Mas especificamente, dentro de la carpeta src de nuestro proyecto
+        tenemos dos carpetas una main: que se encarga de desarrollar y ejecutar
+        completamente nuestro proyecto en y la carpeta test: encargada de
+        replicar la estructura de nuestro proyecto y almancenar la logica 
+        perteneciente a cada uno de los test necesarios para nuestro proyecto.
+
+        Ademas de replicar la arquitectura de nuestro proyecto en la carpeta
+        test es necesario la configuracion de un <application-test.properties>
+        debido a que esteremos trabajando con una base de datos simulada por DBH2
+
+        ETIQUETAS COMUNES:
+
+            @SpringBootTest: pruebas de integracion completa
+            @DataJpaTest: indica test en la capa Repository
+            @Autowired: inyeccion de instacias como atributos
+            @MockBean: inyecta y remplaza dependecias x mocks
+            @BeforeEach: comportamiento antes de la prueba
+            @AfterEach: comportamiento despues de la prueba
+            @Test: indica explicitamente el metodo a testear
+
+
+    *DataJpaTest:
+
+        Con la respectiva etiqueta declaramos la clase como un test
+        jpa y replicamos nuestra clase Repository.
+
+        1.Inyectamos un TestEntityManager para simular la instancia 
+        de entidades en la base de datos embebida DBH2
+        2.Instanciamos la entidad en si y precargamos algunos atributos
+          simulando la persistencia con un @BeforeEach: public void(){}
+          y luego limpiamos la simulacion de la persistencia con un
+          @AfterEach: public void(){}
+        3.Inyectamos una instancia del EntityRespository para tener 
+          acceso a los metodos del Repositortio que debemos probar
+        4.Creamos los metodos correspondientes a los test que debemos
+          llevar adelante, test de comportamiento esperado y test de
+          comportamiento insatisfactorio. Es importante destacar que
+          el cambio principal en el test insatisfactorio no es la logica
+          del test si no los parametros inyectados como atributos
+          (pensados desde el punto de vista del usuario)
+    
+    *ServiceTest:
+
+        Caracteristicas capa de testeo:
+
+            1.No es necesario un bean o etiqueta para declarar explicitamente
+              esta clase
+            2.Es necesaria una instancia de la clase Servicio para evaluar cada
+              uno de sus metodos, pero para evitar cargar el CONTEXTO completo
+              de Spring no utilizamos la etiqueta @Autowired para su inyeccion
+            3.Es necesaria una instancia de la clase Repository, pero al no
+              trabajar con la DB vamos a simular el repositortio con un mock
+            4.Configuramos el entorno con @BeforeEach y @AfterEach
+        
+        Utilidades de Mokito:
+
+            Mokito se encarga principalmente de la creacion de mocks y de
+            su comportamiento
+
+            1.Creacion de Moks: mokito permite crear objetos simulados de
+              clases e interfaces para simular el comprotamiento de los
+              componentes del sistema real.
+            2.Configuracion del comportamiento: definimos el comportamiento
+              de los mocks en situaciones especificas, como el retorno de
+              una accion, no hacer nada o lanzar excepciones. 
+            3.Verificacion de llamadas: mockito permite verificar si un metodo
+              fue llamado con ciertos argumentos y cuantas veces fue llamado.
+            4.ArgumentMatchers: permite la implementacion de ArgumentMatchers
+              para hacer coincidir los argumentos pasados a los metodos simulados
+            5.Configuracion y liberacion de recursos: con los metodos @BeforeEach 
+              y @AfterEach podemos configurar las caracteristicas y el comportamiento
+              de los mocks antes y despues de ser llamadas y ademas la liberacion
+              de los recursos que estos implementan.
+            
+        Utilidades de JUnit:
+
+            JUnit se encarga principal,ente de la organizacion y la ejecucion
+            de las pruebas unitarias ademas de proveer metodos que se encargan
+            de la comprobacion de resultados. Ademas permite agrupar pruebas en
+            suites para ejecutar multiples pruebas como una entidad.
+
+            1.Anotaciones de prueba: Marcan metodos como pruebas unitarias @Test
+
+            2.Metodos assert: 
+
+                .assertEquals: verifica que el resultado de una prueba sea igual
+                 al resultado espero
+
+                .assertThows: verifica si se esta lanzando una excepcion ademas
+                 atraves de una expresion lamba permite la captura de estas
+            
+                .assertTrue/assertFalse: verifica afirmacion booleanas
+
+    *ControllerTest
+
+        Existen dos metodos para desarrollar test unitarios para la capa
+        de controladores, los que operan con solicitudes http atravez de
+        rutas URL y los que operan a traves de los metodo unicamente.
+
+        @WebMvcTest en el contexto de springboot implica simular solicitudes
+        HTTP y verificar las respuestas del controlador en una aplicacion web.
+
+        Esto asegura que las RUTAS, los MANEJADORES de solicitudes, y las
+        RESPUESTAS http funcionan correctamente, es decir, los metodos de
+        testeo desarrollados con @WebMvcTest abarcan mayor contenido de testeo
+        que los desarrollados solo para los metodos con @Mock sin Mvc. 
+
+        Objetivos del testeo de controladores:
+            
+            1.Validar el enrutamiento de URLs
+            2.Verificacion de la correcta transmicion de datos
+            3.Confirmacion del correcto estado en las respuestas http 
+
+        1.Configuracion Basica clase ControllerTest:
+
+        @RunWith(SpringRunner.class)
+        @WebMvcTest(Controller.class) -> apunta a la clase controlador
+        
+        public class ControllerTest {
+
+            @Autowired
+            private MockMvc mockMvc;
+
+            @Autowired
+            private ObjectMapper objectMapper;
+
+            @MockBean
+            private Service service;
+
+            //Pruebas unitarias
+        }
+
+        2.Elementos basicos:
+
+        @RunWith(SpringRunner.class): Esta anotacion indica que utilizamos
+        JUnit 4 para ejecutar nuestras pruebas, SpringRunner permite la
+        integracion de Spring Framework y JUnit.
+
+        @WebMvcTest(Controller.class): Esta anotacion indica que controlador
+        es el que estamos probando.
+
+        MockMvc mockMvc: Esta instancia se inyecta automaticamente y se 
+        utiliza para realizar solicitudes http simuladas.
+
+        ObjectMapper objectMapper: Esta instancia se utiliza para convertir
+        obj java en formato Json y viceversa.
+
+        @MockBean: Esta anotacion permite inyectar mocks para las dependencias
+        necesarias del controlador, en este caso los servicios. 
+
+        3.Estructura de los metodos de prueba:
+
+            1.Preparacion: Prepara las dependencias necesarias para el
+            funcionamiento de tu solicitud con @MockBean, en este caso
+            el los servicios implementados en tu respuesta.
+
+            2.Solicitud Http: Crea una solicitud Http simulada, esta 
+            debe incluir todos los elementos necesarios como URL, el
+            metodo http, los parametros y el cuerpo de la solicitud
+            dependiendo del caso. 
+
+            3.Simulacion de la respuesta: Realiza la llamada al metodo
+            correspondiente del controlador utilizando MockMvc.
+
+            4.Verificacion: Utiliza aserciones (assertThat) para verificar
+            que la respuesta sea la esperada, puede incluir, la verificacion
+            del codigo de estado o el contenido de la respuesta.
+
+        4.Casos de prueba comunes:
+
+        Cuando se desarrollan pruebas unitarias para controladores en
+        springboot es importante cubrir una variedad de casos comunes para
+        garantizar que tu aplicacion funcione correctamente.
+
+            1.Pruebas de rutas: verifican que tus rutas se mapen correctamente
+            a los metodos y devuelvan el resultado esperado, esta pruebas simula
+            una solicitud get a la ruta /tuRuta y verifica que la respuesta
+            tenga un estado Http Ok(200), que el contenido sea JSON y que la
+            respuesta contenga una lista de productos con el "Producto1" en la
+            primera posicion de la misma. 
+
+                @Test
+                public void getProductosTest() throws Exception {
+                    mockMvc.perform(get("/tuRuta"))
+                        .andExpect(status().isOk())
+                        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(jsonPath("$", hashSize(2)))
+                        .andExpect(jsonPath("$[0].name", is("Product1")));
+                }
+
+            2.Pruebas de parametros: verifican que se manejen los parametros
+            de la solicitud correctamente, esta prueba verifica que el controlar
+            responda correctamente a una solicitud get con el parametro {id} y
+            que devuelva el producto en el ID1.
+
+                @Test
+                public void getProductosXidTest() throws Exception {
+                    mockMvc.perform(get("/tuRuta/{id}"))
+                        .andExpect(status().isOk())
+                        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(jsonPath("$.id", is(1)))
+                        .andExpect(jsonPath("$.name",is("Product1")));
+                }
+            
+            3.Pruebas de validaciones de datos: se enfocan en validad que los
+            controladores manejen correctamente los datos de entrada y salida,
+            es decir, que los datos de entrada SEAN VALIDOS y que LOS ERRORES
+            se manejen correctamente. La siguiente prueba verifica una solicitud
+            Post con datos invalidos que devuelve un estado Http BadRequest(400)
+            y un mensaje de error adecuado.
+
+                @Test
+                public void testCreateProduct_InvalidData() throws Exception {
+                    Producto invalidProduct = new Producto("Datos invalidos");
+                    mockMvc.perform(post("/tuRuta"))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(ObjectMapper.writeValueAsString(invalidProduct))
+                    .andExpect(status().isBadRequest())
+                    .andExpect(jsonPath("$.message", is("Validation failed")));
+                }
+            
+        5.Configuracion del Obj mockMvc:
+
+            .perform: inicia la ejecucion de una solicitud Http, recibe
+            el tipo de solicitud y la ruta como parametro
+
+            .andExpect: permite agregar multiples expresiones que especifican
+            las condiciones que se esperan verificar en la respuesta, poseen el
+            mismo comportamiento que un assertion por lo tanto en caso de que
+            una de estas condiciones no se cumpla la prueba no sera exitosa:
+
+                .andExpect(status().isOk()): verifica que el codigo de estado
+                 sea OK(200)
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON)):
+                 verifica que el tipo de contendio en la respuesta sea JSON
+                .andExpect(jsonPath("$.id", is(1))): verifica que la clave "id"
+                 en el cuerpo de la respuesta sea igual a 1
+                .andExpect(jsonPath("$.name", is("Nombre"))): verifica que la clave
+                 "name" en el cuerpo de la respuesta sea igual a "Nombre"
+            
+                << Aclaracion: dentro del contexto jsonPath el signo "$" indica
+                   la raiz del cuerpo de la respuesta JSON, es decir indica el
+                   comienzo del documento JSON, puede ser un obj o una lista >>
+
+            .contentType: dependiendo del contexto este metodo puede usarse para
+             configurar el tipo de respuesta esperada, utilizado dentro de un
+             andExpect(content().contentType()), o puede ser utilizado para configurar
+             una solicitud Http como metodo directo de mockMvc.
+
+                .contentType(MediaType.APPLICATION_JSON): establece que el tipo
+                 de contenido del cuerpo de la SOLICITUD Http, es decir, el
+                 contenido ENVIDADO al servidor esta en formato JSON
+
+            .content: establece el CUERPO dependiendo de la solicitud, en el
+             contexto del mockMvc, al ser un metodo directo de este mock se
+             establece la configuracion del CUERPO en la solicitud Http.
+
+                .content(ObjectMapper.writeValueAsString(invalidProduct)):
+                 estable que el cuerpo de la solicitud contiene una cadena 
+                 de formato JSON que representa el objeto invalidProduct
+                
+            Los metodos mencionados anteriormente son los principales para la
+            configuracion del mockMvc, en el contexto de la solicitud como de
+            la respuesta ya que pueden comportarse de diversas maneras. Pero
+            existen metodos comunes con comportamiento similares como son:
+
+                [ param, requestAttr, flash, redirectedUrl ]
+
+            .param: agrega o verifica parametros en la solicitud o respuesta
+
+                mockMvc.perform(get("/ruta").param("name","jhon"))
+                andExpect(request().param("name","jhon"))
+
+            .requestAttr: accede a atributos de par clave valor
+
+                mockMvc.perform(get("/ruta").requestAttr("key","value"))
+                andExpect(request().attribute("key","value"))
+
+            .flash: accede a los atributos del flash
+
+                mockMvc.perform(post("/ruta").flash().attribute("key","value"))
+                andExpect(flash().atribute("key","value"))
+
+            .redirectedUrl: verifica o indica que la solicitud o respuesta
+            redirijan a una Url especifica.
+
+                mockMvc.perform(post("/ruta").redirectedUrl("/nuevaRuta"))
+                andExpect(redirectedUrl("/nuevaRuta"))
+            
+CLASE 21 - DOCUMENTACION CON SWAGGER 
+
+    La documentacion en una API es un documento tecnico que proporciona 
+    detalles tecnicos e informacion sobre el uso e implementacion de la
+    API, se describen caracteristicas generales, funciones y metodos de
+    integracion en aplicaiones de sofware.
+
+    ¿Que se decoumenta en una API?
+
+    1.Descripcion general
+    2.Detalles de los Enpoints y rutas
+    3.Parametros de las solicitudes
+    4.Cuerpo de las solcitudes de ser necesario
+    5.Descripcion de las respuestas esperadas
+    6.Detalles sobre los permisos de uso y autenticacion
+    7.Ejemplos de uso
+    8.Versionamiento
+    9.Errores y manejo de excepciones
+    10.Contacto y soporte
+
+    SWAGGER
+
+        Swagger es una herramienta que se utiliza para diseñar, documentar 
+        y probar APIs de forma efectiva, tambien se usa en gobernabilidad
+        (ciclo de vida y versionamiento) y monitoreo (supervision del
+        comportamiento en tiempo real). 
+
+        Aunque Swagger brinda diversidad de herramientas, es popular por
+        las facilidades que brinda en cuanto a documentacion, ya que permite
+        automatizar el proceso de escritura de la documentacion, no solo
+        nos ahorra el tiempo de escritura manual si no que tambien deja
+        asentadas las actualizaciones de la misma.
+
+        Durante la fase de compilacion SpringFox interpreta las etiquetas
+        de Swagger y genera una documentacion Swagger JSON.
+
+        INTEGRACION DE SPRINGFOX SWAGGER
+
+            La biblioteca SpringFox Swagger se utiliza para integrar Swagger
+            en la aplicacion proporcionando un ecosistema de etiquetas
+            utilizadas en el proceso de documentacion de la API
+
+            @ApiOperation: colocada en los metodos de controladores para
+             describir la operacion que realizan los metodos
+
+            @Api: colocada a nivel de clase en el controlador para proporcionar
+             informacion adicional sobre la API en su conjunto
+
+            @ApiImplicitParams: se utiliza para describir los parametros
+             individuales que se utilizan en una operacion
+
+            @ApiResponses: permite definir diferentes respuestas posibles
+             para una operacion
+        
+        EJEMPLO DE USO:
+
+            @RestController
+            @RequestMapping("/api/v1/cloud-vendors")
+            @Api(tags = "Cloud Vendors", description = "Operations related to Cloud Venders")
+            public class CloudVendorController {
+
+                @GetMapping("/{vendorId}")
+                @ApiOperation(value = "get cloud vendor by Id", response = CloudVendor.class)
+                @ApiResponses({
+                    @ApiResponse(code = 200, message = "Success", response = CloudVendor.class)
+                    @ApiResponse(code = 404, message = "Vendor not found")
+                    @ApiResponse(code = 500, message = "Internal server error")
+                })
+                
+                public ResponseEntity<CloudVendor> getCloudVendorById(@PathVariable String vendorId){
+                    //logica del metodo
+                }
+            }
+
+        CONFIGURACION DE SWAGGER
+
+            1.Es necesario agregar las dependencias de forma manual en nuestro
+            archivo pom.xml:
+            
+                <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>3.0.0</version>
+                </dependency>
+            
+            2.Agregamos configuracion en nuestro aplication.properties:
+
+                spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
+
+            3.Configuracion del main:
+            
+            La configuracion de Swagger se define en la clase main ya
+            que es el punto central de arranque de la aplicacion, esto
+            es particularmente importante si entendemos que queremos
+            documentar el comportamiento global de nuestra aplicacion.
+
+                @Bean
+                public Docket swaggerConfiguration() {
+                    return new Docket(DocumentationType.SWAGGER_2)
+                        .select()
+                        .paths(PathSelectors.ant("/rutaPirncipal/*"))
+                        .apis(RequestHandlerSelectors.basePackage("com/**/*.java"))
+                        .buil()
+                        .apiInfo(apiCustomData);
+                }
+
+                1.Indicamos a spring que tenemos un Bean de tipo Docket:
+                    Docket es una clase de springFox que facilita la configuracion
+                    necesaria para automatizar la documentacion de la API
+                2.Intanciamos el retorno del obj Docket y lo completamos sus parametros 
+                con un obj de tipo ENUM que identifica la version de Swagger
+                3.Configuramos el objeto:
+
+                    .select(): posibilita seleccion de rutas
+                    .paths(PathSelectors.ant("")): indica que se deben documentar todas
+                     las rutas pertenecientes a este endpoint
+                    .apis(RequestHandlerSelectors.basePackage("")): ruta donde se realizara
+                     la documentacion
+                    .build(): finaliza la configuracion del Docket y contruye el objeto
+                    .apiInfo(apiCustomData()): instancia un obj de tipo apiInfo que
+                     que completamos con los datos de nuestra api
+
+            4.Configuracion del obj ApiInfo
+
+                private ApiInfo apiCustomData() {
+                    return new ApiInfo(
+                        title:"",
+                        descripcion:"",
+                        version:"",
+                        termsOfServiceUrl:"",
+                        new Contact(name:"",url:"",email:""),
+                        license:"",
+                        licenseUrl:"",
+                        Collections.emptyList() -> argumento para info adicional);
+                } 
+
+            5.Comentatios a la documentacion
+
+            La etiqueta @ApiOperation se utiliza para describir las operaciones
+            o metodos de tu controlar que representan endpoints de tu la API.
+
+                @GetMapping("/{vendorId}")
+             -> @ApiOperation(value = "cloud vendor id", note = "detalles", response = ResponseEntity.class)
+                public ResponseEntity<Object> getCloudVenderDetails(@PathVariable("vendorId") String vendorId) {
+                    return ResponseHandler.responseBuilder("detalles",
+                    HttpStatus.OK, getCloudVendorService.getCloudVendor(vendorId));
+                }
+
+            @ApiOperation es interpretada por swagger durante la generacion
+            de la documentacion de la API, cuando se utiliza junto con otras
+            anotaciones de Swagger (@Api, @ApiImplicitParams y @ApiResponses)
+            contribuye a la creacion de una documentacion API interactiva.
+
+            6.Acceso a la documentacion
+
+            Podemos visualizar la documentacion atravez del servidor local
+            o por medio de una solicitud get en postman:
+
+                http://localhost:8080/v3/api-docs
+            
+            O si queremos visualizar en la interfas proporcionada por Swagger:
+
+                http://localhost:8080/swagger-ui/#/              
+
+CLASE RESPONSEENTITY 
+
+    ResponseEntity es una clase proporcionada por el framework de spring
+    dedicada a la CREACION Y GESTION de respuestas Http, permite la 
+    creacion de respuestas personalizadas incluyendo cuerpo, cabezera y
+    codigo de estado. 
+
+    Body: Su estructura permite cuerpos genericos por lo cual las 
+    respuestas admiten cualquier tipo de dato en el cuerpo de la misma:
+
+        ResponseEntity<T> : cuerpo generico cualquier obj
+        ResponseEntity<Object> : cuerpo de la clase Object
+        ResponseEntity<String> : cuerpo de tipo String
+
+    Headers: Son un componente de las respuestas http que proporcionan
+    informacion adicional sobre la respuesta y el servidor, puede indicar
+    el tipo de dato implicado en el cuerpo, informacion sobre el status
+    de la respuesta, puede estar contruida por un hashMap e incluir varias
+    cabezeras personalizadas que incluyen varios pares clave-valor
+
+        ResponseEntity<String> response = ResponseEntity.ok().header("clave","valor").body("cuerpo");
+
+        Map<String, String> headers = new HashMap<>();
+        headers.put("clave","valor");
+        headers.put("clave2","valor2");
+        ResponseEntity<String> response = ResponseEntity.ok().headers(headers).body("cuerpo");
+
+    HttpStatus : codigo de estado asociado al tipo de respuesta
+
+    Construcctores
+
+        Existen diferentes tipo de contructores para esta clase con el
+        objetivo de facilitar su sintaxis en una linea continua con varios
+        metodos estaticos de la clase.
+
+        ResponseEntity<String> response = new ResponseEntity<>("cuerpo",HttpStatus.OK);
+        ResponseEntity<String> response = ResponseEntity.ok("cuerpo");
+        ResponseEntity<String> resposne = ResponseEntity.status(HttpStatus.NOT_FOUND).body("cuerpo");
+        ResponseEntity<String> response = ResponseEntity.ok().header("clave","valor").body("cuerpo");
+
+CLASE 22 - MANEJO CENTRALIZADO DE EXCEPCIONES
+
+    RECORDAR: Una excepcion es un EVENTO que INTERRUMPLE EL FLUJO normal
+    de un programa.
+
+    Concretamente un excepcion es un OBJETO diseñado para modelar un
+    evento excepcional, el cual no deberia ocurrir. Cuando se produce uno 
+    de estos eventos, se LANZA un obj excepcion que tiene la capacidad de
+    interrumplir el flujo del programa.
+
+    JERARQUIA
+
+    Todas las clases de excepcion extienden de la clase padre Thorwable
+    que es una subclase de Object
+
+    Object:
+        -> Thorwable:
+            -> Error: errores en la maquina virtual de java
+            -> Exception: eventos que conducen a la interrupcion del flujo
+                ->RuntimeException: excepciones Unchecked
+                ->IO Exception: excepcones verificadas y conocidas como
+                  las que podemos envolver en un bucle try-catch
+
+    RuntimeException o Unchecked Exception:        
+
+        Las excepciones no verificadas o tambien conocidas como en TIEMPO
+        DE EJECUCION, son excepciones que no son verificadas por el compilador
+        por lo tanto, no requieren que el programador
+        las capture o declare en la firma del metodo, ya que suelen estar
+        relacionadas con errores de programacion, por lo general, a errores
+        en la logica o sintaxis del programa.
+
+        Excepciones frecuentes:
+
+            1.NullPointerException: ocurre cuando intentamos acceder a un
+            a un objeto que no ha sido inicializado
+
+            2.AritmeticException: Se produce cuando ocurre un error en una
+            operacion aritmetica como una division por cero
+
+            3.IndexOutOfBoundException: Ocurre al intentar acceder a un
+            indice fuera del rango valido
+
+            4.IllegalArgumentException: Ocurre cuando un metodo recibe un
+            argumento que no es valido o esta fuera de los limites permitidos
+
+    Exception Handling de Spring Boot
+
+        Cuando hablamos de una manejo centralizado o global nos referimos
+        a que existe una capa dentro de nuestra arquitectura destinada
+        a gestionar todas las excepciones de nuestro sistema. 
+
+        Uno de los beneficios mas inmediato y visible es la reduccion en
+        la cantidad de bloques try-catch en cada metodo lo que mejora la
+        legibilidad de nuestros codigo. Ademas promuebe la reutilizacion
+        y la modularidad por lo cual se adapta mejor a los principios SOLID
+
+    Errores bajo estado Http
+
+        En una API Rest las mayoria de los errores se producen durante
+        el intercambio de informacion en las solicitudes http, por esto
+        es conveniente anticiparse a los errores que se pueden producir
+        segun el tipo de informacion que se esta intercambiando o basados
+        principalmente en los elementos de la solicitud y los elementos
+        en la respuesta de cada metodo.
+
+        Jesus Bernal Bermudez de la Universidad Politecnica de Madrid
+        propone la siguiente lista para manejar la mayoria de casos que
+        se pueden presentar en las solicitudes:
+
+            1.notFoundRequest: lo que se esta buscando no se encuentra
+            2.badRequest: mala peticion como falta de parametros
+            3.conflict: ej dar de alta a un usuario con un mail ya registrado
+            4.forbidenRequest: operacion no permitida
+            5.fatalErrorException: error fatal inesperado por el sistema
+              esta ultima puede aplicarse a cualquier error que no se este
+              esperando dentro del sistema 
+
+    Capa Exception
+
+        1.Creamos un directorio que donde se alojaran todas nuestras
+        configuraciones vinculadas al manejo de excepciones. Entre
+        las clases debemos crear un MODELO DE RESPUESTA, es decir,
+        una plantilla con el formato que tendran todas las excepciones
+        lanzadas por el sistema.
+
+        public class ModeloRespuesta {
+            private String menssege;
+            private Thorwable thorwable;
+            private HttpStatus httpStatus;
+
+            public ModeloRespuesta(String menssege){
+                this.menssege = menssege;
+                this.thorwable = thorwable;
+                this.httpStatus = httpStatus;
+            }
+
+        }
+
+        2.Creamos una clase donde se desarrolla la logica de cada una
+        de las excepciones personalizadas que podemos anticipar segun
+        el modelo de Jesus Bermudez, donde todas las clases extienden
+        a RuntimeException. 
+
+        public class ModeloNotFoundException extends RuntimeException {
+
+            public ModeloNotFoundException(String message) {
+                super(message);
+            }
+
+            public ModeloNotFoundException(String message, Thorwable cuase) {
+                super(message, cuase);
+            }
+        }
+
+        3.Una vez creado el modelo de respuesta y los errores personalizados
+        es necesario crear el CONTROLADOR de los errores, es decir, una clase
+        con las configuraciones necesarias para indicarle a spring como implementar
+        todo este sistema de manejo de errores, con sus respectivos @Beans 
+
+        @ControllerAdvice
+        public class ControladorExceptionHandler {
+
+            @ExceptionHandler(value = {ModeloNotFoundException.class})
+            public ResponseEntity<Object> handleModeloNotFoundException
+                (ModeloNotFoundException modeloNotFoundException) {
+                    ModeloNotFoundException modeloNotFoundException = new ModeloNotFoundException(
+                        modeloNotFoundException.getMessge(),
+                        modeloNotFoundException.getCause(),
+                        HttpStatus.NOT_FOUND
+                    );
+                    return new ResponseEntity<>(modeloNotFoundException, HttpStatus.NOT_FOUND);
+                }
+        }
+
+        5.Debemos modelar nuestra capa de servicios donde debemos tener en
+        cuenta que excepciones se adaptan a los datos implicados
+
+        @Override
+        public Entidad getEntidad(String entidadId){
+            if(entidadRepository.findById(entidadId).isEmpty())
+                throw new ModeloNotFoundException("La entidad buscada no existe");
+            return entidadRepository.findById(entidadId).get();
+        }
+
+        6.Integracion en el controlador de nuestras rutas
+
+        @GetMapping({"/{entidadId}"}):
+        public ResponseEntity<Object> getEntidadDetails(@PathVariable("entidadId") String entidadId){
+            return ResponseHandler.responseBuilder("Details Here", HttpStatus.OK, entidadService.getEntidadXid(entidadId))
+        }
+
+        Este controlador maneja las solcitudes Get para obtener detalles
+        de una entidad especifica la cual es identificada por un Id que
+        es ingresado como un parametro dentro de la ruta de la solicitud
+
+        ResponseHandler actua como una clase personalizada encarga de la
+        contruccion de todas las respuestas Http solicitadas de una
+        manera similar a como actua la creacion de respuestas de la clase
+        ResponseEntity.
+
+        ResponseHandler proporciona una interfaz uniforme para la creacion
+        de respuestas Http simplificando el codigo en el controlador y 
+        asegurando coherencia en las respuestas, si bien ResponseEntity es
+        un estandar para la creacion de respuestas en Spring el uso de
+        ResponseHandler mejora la legibilidad y ademas proporciona logica
+        comun para el manejo de errores fuera del controlador.
+
+
+
+    
+
+
