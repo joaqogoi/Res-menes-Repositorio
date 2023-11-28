@@ -1220,7 +1220,7 @@ CLASE RESPONSEENTITY
     Headers: Son un componente de las respuestas http que proporcionan
     informacion adicional sobre la respuesta y el servidor, puede indicar
     el tipo de dato implicado en el cuerpo, informacion sobre el status
-    de la respuesta, puede estar contruida por un hashMap e incluir varias
+    de la respuesta y puede estar contruida por un hashMap e incluir varias
     cabezeras personalizadas que incluyen varios pares clave-valor
 
         ResponseEntity<String> response = ResponseEntity.ok().header("clave","valor").body("cuerpo");
@@ -1410,6 +1410,79 @@ CLASE 22 - MANEJO CENTRALIZADO DE EXCEPCIONES
         un estandar para la creacion de respuestas en Spring el uso de
         ResponseHandler mejora la legibilidad y ademas proporciona logica
         comun para el manejo de errores fuera del controlador.
+
+    Exception Handler with Controller Advice in Spring
+
+        El framework de spring soporta un manejo global de exceptiones
+        mediante un controlador global denominado Exception Handler 
+        que es invocado y configurado por medio de la etiqueta
+        @ExceptionHandler en una clase @ControllerAdvice. 
+
+        La clase @ControllerAdvice es autodetectada mediante el escaneo
+        del classpath, el controller advice es un tipo de interceptor que
+        rodea la logica en los controladores @ExceptionHandler y nos permite
+        desarrollar la logica con la cual se manejaran al ser invocados. 
+
+        Los metodos de esta clase anotados bajo le etiqueta @ExceptionHandler
+        son globalmente compartidos por muchos componente @Controller que 
+        capturan las excepciones y las traducen a respuestas Http.
+
+        La anotacion @ExceptionHandler indica que tipo de exception queremos
+        manejar, la instancia de la excepcion y la peticion seran inyectados
+        por medio de los argumentos del metodo. 
+
+        Usando solo dos etiquetas, podemos controlar el cuerpo de la respuesta
+        por medio del codigo de estado y manejar varias excepciones en el  
+        mismo metodo.
+
+            Ej:
+
+            @ControllerAdvice
+            public class ControllerAdviceHandler {
+
+                @ExceptionHandler(value = {ResourceNotFoundException.class, CertainException.class})
+                public ResponseEntity<ErrorMessage> ResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+                    ErrorMessage message = new ErrorMessage(
+                        status,
+                        ex.getMessge(),
+                        description
+                    );
+                    return new ResponseEntity<ErrorMessage> (message, HttpStatus.NOT_FOUND,);
+                }
+            }
+
+    @ResponseBody y @ResponseStatus
+
+        Spring nos provee de la etiqueta @ResponseBody que le indica
+        a el controlador que el objeto retornado por el metodo debe ser
+        automaticamente serializado a JSON y pasado como objeto en la
+        respuesta Http. Esta logica no necesita del ResponseEntity pero
+        es necesario una etiqueta @ResponseStatus para indicar el 
+        codigo de estado al cual responde esta excepcion.
+
+        @ControllerAdvice
+        @ResponseBody
+        public class ControllerExceptionHandler {
+
+            @ExceptionHandler(ResourceNotFoundException.class)
+            @ResponseStatus(value = HttpStatus.NOT_FOUND)
+            public ErrorMessage resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+                ErrorMessage message = new ErrorMessage();
+                return message;
+            }
+        }
+
+CLASE 25 - SPRING SECURITY MVC 
+
+
+
+
+
+        
+        
+
+
+
 
 
 
