@@ -1472,7 +1472,87 @@ CLASE 22 - MANEJO CENTRALIZADO DE EXCEPCIONES
             }
         }
 
-CLASE 25 - SPRING SECURITY MVC 
+CLASE 25 - SPRING SECURITY
+
+    Spring Security es un marco de seguridad integral para aplicaciones
+    Java que proporciona funciones de seguridad  nivel de ACCESO.
+
+    Caracteristicas
+
+        1.Autenticacion: facilita la implementacion de procesos de
+        autenticacion, en los cuales se VERIFICA la identidad de los
+        usuarios, gestionado mediante la implementacion de formularios
+        y tokens.
+
+        2.Autorizacion: permite definir REGLAS para gestionar roles y
+        permisos de acceso, es decir, que usuarios ingresan a determinados
+        recursos.
+
+        3.Proteccion contra ataques comunes: incluye mecanismos para 
+        proteger contra ataques comunes en aplicaciones web como XSS,
+        CSRF, inyeccion de SQL y otros.
+
+        4.Gestion de sesiones: Proporciona herramientas para gestionar 
+        sesiones de usuarios de manera segura, prevencion de fijacion
+        de sesiones y gestion de tokens de sesion.
+
+        5.Integracion con otros frameworks de Spring: debido a su logica 
+        y arquitectura se integra facilmente con otro frameworks como
+        Spring MVC.
+
+        6.Extensibilidad: Spring Security es altamente extensible, lo que
+        permite personalizar y ampliar su funcionalidad segun la necesidad
+        de la aplicacion.
+
+    Dependencias: 
+        
+        se pueden agregar al crear el proyecto en Spring Initializer
+        o se pueden agregar las dependecias luego de la creacion del 
+        proyecto en un instacia mas avanzada simplemente agregandolas
+        en el archivo pom
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        Al agregar esta dependencia automaticamente se agrega a nuestro
+        proyecto el sistema de login proporcionado por Spring Security,
+        el cual debemos de personalizar para que se adapte a las necesidades 
+        de nuestro proyecto.
+
+        Por defecto el sistema de login de Spring Security trea incorporado
+        un sistema de sesiones que duran 30 minutos logueadas con un usuario
+        (user) por defecto y una contraseña que se muestra en la terminal
+        ademas de una vista Html con su logica propia.
+
+    Etiquetas @anotations utilizadas:
+
+        @Configuration: Esta etiqueta le indica al sistema de Spring que
+        la clase al cargar el contexto de la aplicacion debe tener en cuenta
+        esta clase como un parametro de configuracion global de la App.
+
+        @EnableWebSecurity: Le indica a Spring que configura aspectos especificos
+        de la seguridad web. Esta anotacion importa una serie de configuraciones
+        predeterminadas, como la configuracion de filtros, controladores de acceso,
+        y proporciona una base sobre la cual podemos personalizar la seguridad en
+        base a estos aspectos.
+
+        @EnableGlobalMethodSecurity: Se utiliza para habilitar la seguridad a
+        nivel del metodo, permite el procesamiento de anotaciones como @Secured,
+        @PreAuthorize, @PostAuthorize, entre otras para controlar el ACCESO a
+        metodos especificos. Para habilitar el uso de estas anotaciones es 
+        necesario modificar el atributo prePostEnable = true para configurar
+        un control de acceso antes y despues de la ejecucion de un metodo. 
+
+
+
+
+
+
+
+
+
 
 
 
